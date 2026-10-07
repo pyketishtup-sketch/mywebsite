@@ -122,5 +122,7 @@ I am learning Python, programming and web development.
 </body>
 </html>
 """
+import os
 
-app.run()
+app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    
