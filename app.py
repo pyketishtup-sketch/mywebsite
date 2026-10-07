@@ -236,7 +236,8 @@ def home():
 
             border-color: #38bdf8;
 
-            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.12);
+            box-shadow:
+                0 8px 25px rgba(56, 189, 248, 0.12);
         }
 
 
@@ -380,6 +381,54 @@ def home():
         }
 
 
+        /* INTERESTS */
+
+        .interests {
+            background: #0f172a;
+        }
+
+        .interest-card {
+            width: 300px;
+
+            padding: 35px 25px;
+
+            background: #111827;
+
+            border: 1px solid #1e293b;
+
+            border-radius: 18px;
+
+            transition: 0.3s;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-10px);
+
+            border-color: #38bdf8;
+
+            box-shadow:
+                0 15px 35px rgba(56, 189, 248, 0.12);
+        }
+
+        .interest-icon {
+            font-size: 45px;
+
+            margin-bottom: 15px;
+        }
+
+        .interest-card h3 {
+            color: #38bdf8;
+
+            font-size: 23px;
+
+            margin-bottom: 10px;
+        }
+
+        .interest-card p {
+            color: #94a3b8;
+        }
+
+
         /* CONTACT */
 
         .contact {
@@ -465,6 +514,8 @@ def home():
             <a href="#skills">Skills</a>
 
             <a href="#projects">Projects</a>
+
+            <a href="#interests">Interests</a>
 
             <a href="#contact">Contact</a>
 
@@ -705,6 +756,82 @@ def home():
     </section>
 
 
+    <!-- BEYOND ACADEMICS -->
+
+    <section class="interests" id="interests">
+
+        <h2 class="section-title">
+            Beyond Academics
+        </h2>
+
+        <p class="section-text">
+            The things I enjoy outside my studies
+            and programming.
+        </p>
+
+
+        <div class="cards">
+
+
+            <div class="interest-card">
+
+                <div class="interest-icon">
+                    Cricket
+                </div>
+
+                <h3>
+                    Cricket
+                </h3>
+
+                <p>
+                    A sport I have loved since childhood.
+                    Cricket is one of my biggest passions.
+                </p>
+
+            </div>
+
+
+            <div class="interest-card">
+
+                <div class="interest-icon">
+                    Tech
+                </div>
+
+                <h3>
+                    Technology
+                </h3>
+
+                <p>
+                    I enjoy exploring computers,
+                    programming and new technology.
+                </p>
+
+            </div>
+
+
+            <div class="interest-card">
+
+                <div class="interest-icon">
+                    Learning
+                </div>
+
+                <h3>
+                    Learning
+                </h3>
+
+                <p>
+                    I like learning new things and
+                    improving my skills step by step.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
     <!-- CONTACT -->
 
     <section class="contact" id="contact">
@@ -740,6 +867,7 @@ def home():
 
 </html>
 """
+
 
 app.run(
     host="0.0.0.0",
