@@ -21,6 +21,51 @@ def home():
             scroll-behavior: smooth;
         }
 
+        @keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #38bdf8;
+    }
+
+    50% {
+        text-shadow: 0 0 25px #38bdf8;
+    }
+
+    100% {
+        text-shadow: 0 0 5px #38bdf8;
+    }
+}
+
+.hero small {
+    animation: fadeUp 1s ease;
+}
+
+.hero h1 {
+    animation: fadeUp 1.2s ease;
+}
+
+.hero h1 span {
+    animation: glow 2s infinite;
+}
+
+.hero p {
+    animation: fadeUp 1.4s ease;
+}
+
+.hero .button {
+    animation: fadeUp 1.6s ease;
+}
         body {
             font-family: Arial, sans-serif;
             background: #0b1120;
