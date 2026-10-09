@@ -13,639 +13,195 @@ def home():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#081426">
-<meta name="description" content="The personal portfolio of a Class XI student interested in PCM, computer science, cricket and technology.">
-<title>Tishtup Pyke | Student Portfolio</title>
+<meta name="description" content="Tishtup Pyke's student portfolio featuring cricket, science quizzes and interactive challenges.">
+<title>Tishtup Pyke | Portfolio & Quiz Arena</title>
 
 <style>
 :root {
-    --bg: #081426;
-    --bg2: #0d1c32;
-    --card: rgba(20, 39, 65, 0.78);
-    --text: #eef4ff;
-    --muted: #aabbd3;
-    --accent: #55b8ff;
-    --accent2: #8c7bff;
-    --border: rgba(255,255,255,0.11);
-    --shadow: rgba(0,0,0,0.22);
+    --bg:#081426; --bg2:#10223c; --card:rgba(20,39,65,.85);
+    --text:#eef4ff; --muted:#aabbd3; --accent:#55b8ff;
+    --accent2:#8c7bff; --border:rgba(255,255,255,.12);
 }
-
 body.light {
-    --bg: #f2f6fc;
-    --bg2: #e5edf9;
-    --card: rgba(255,255,255,0.9);
-    --text: #14233a;
-    --muted: #586b85;
-    --accent: #0879d1;
-    --accent2: #6652db;
-    --border: rgba(20,35,58,0.12);
-    --shadow: rgba(27,51,85,0.09);
+    --bg:#f2f6fc; --bg2:#e5edf9; --card:rgba(255,255,255,.93);
+    --text:#14233a; --muted:#586b85; --accent:#0879d1;
+    --accent2:#6652db; --border:rgba(20,35,58,.13);
 }
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
+* {box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background:
-        radial-gradient(circle at 10% 5%, rgba(65,133,255,0.13), transparent 30%),
-        radial-gradient(circle at 90% 25%, rgba(135,91,255,0.11), transparent 27%),
-        var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    transition: background 0.3s, color 0.3s;
+    font-family:"Segoe UI",Arial,sans-serif;color:var(--text);
+    background:radial-gradient(circle at 10% 5%,rgba(65,133,255,.13),transparent 30%),var(--bg);
+    line-height:1.7;transition:background .3s,color .3s;
 }
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button {
-    font: inherit;
-}
-
+a {color:inherit;text-decoration:none}
+button,input {font:inherit}
 nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    padding: 15px 7%;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(18px);
+    position:sticky;top:0;z-index:1000;padding:14px 6%;
+    display:flex;justify-content:space-between;align-items:center;gap:15px;
+    background:var(--bg);border-bottom:1px solid var(--border);
 }
-
-.logo {
-    font-size: 1.2rem;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-}
-
-.logo span {
-    color: var(--accent);
-}
-
-.nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 17px;
-}
-
-.nav-links a {
-    font-size: 0.88rem;
-    color: var(--muted);
-    transition: color 0.2s;
-}
-
-.nav-links a:hover {
-    color: var(--accent);
-}
-
+.logo {font-size:1.25rem;font-weight:900;white-space:nowrap}
+.logo span,.accent {color:var(--accent)}
+.nav-links {display:flex;flex-wrap:wrap;justify-content:flex-end;gap:13px;align-items:center}
+.nav-links a {font-size:.85rem;color:var(--muted)}
+.nav-links a:hover {color:var(--accent)}
 .theme-btn {
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--text);
-    border-radius: 50%;
-    width: 39px;
-    height: 39px;
-    cursor: pointer;
+    width:38px;height:38px;border-radius:50%;cursor:pointer;
+    background:var(--card);color:var(--text);border:1px solid var(--border)
 }
-
-section {
-    padding: 85px 8%;
-    scroll-margin-top: 75px;
-}
-
-.hero {
-    min-height: 88vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-content {
-    max-width: 850px;
-    position: relative;
-    z-index: 1;
-}
-
+section {padding:75px 8%;scroll-margin-top:75px}
+.hero {min-height:82vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-content {max-width:850px;position:relative;z-index:1}
 .eyebrow {
-    display: inline-block;
-    color: var(--accent);
-    background: rgba(85,184,255,0.09);
-    border: 1px solid rgba(85,184,255,0.24);
-    padding: 6px 13px;
-    border-radius: 30px;
-    font-size: 0.85rem;
-    margin-bottom: 22px;
+    display:inline-block;color:var(--accent);background:rgba(85,184,255,.09);
+    border:1px solid rgba(85,184,255,.25);padding:5px 13px;
+    border-radius:30px;font-size:.83rem;margin-bottom:20px
 }
-
-h1 {
-    font-size: clamp(2.7rem, 7vw, 5.3rem);
-    line-height: 1.12;
-    letter-spacing: -2px;
-    margin-bottom: 20px;
-}
-
+h1 {font-size:clamp(2.7rem,7vw,5rem);line-height:1.12;letter-spacing:-2px;margin-bottom:20px}
 .gradient-text {
-    background: linear-gradient(100deg, #55b8ff, #9b8bff, #62e4d0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    background:linear-gradient(100deg,#55b8ff,#9b8bff,#62e4d0);
+    -webkit-background-clip:text;background-clip:text;color:transparent
 }
-
-.hero p {
-    max-width: 650px;
-    color: var(--muted);
-    font-size: 1.1rem;
-    margin-bottom: 25px;
-}
-
-.hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 25px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 11px 19px;
-    border-radius: 10px;
-    background: linear-gradient(110deg, #168de0, #7061eb);
-    color: white;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s, opacity 0.2s;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    opacity: 0.92;
-}
-
-.btn.secondary {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-}
-
+.hero p {max-width:650px;color:var(--muted);font-size:1.1rem;margin-bottom:24px}
 .hero-glow {
-    position: absolute;
-    width: 330px;
-    height: 330px;
-    right: 3%;
-    top: 24%;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #258bff, #7657e8);
-    filter: blur(120px);
-    opacity: 0.23;
-    pointer-events: none;
+    position:absolute;right:4%;top:25%;width:300px;height:300px;border-radius:50%;
+    background:linear-gradient(135deg,#258bff,#7657e8);filter:blur(120px);opacity:.25
 }
-
-.section-heading {
-    text-align: center;
-    margin-bottom: 40px;
+.hero-buttons,.actions {display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.btn {
+    display:inline-block;padding:11px 18px;border:0;border-radius:10px;
+    background:linear-gradient(110deg,#168de0,#7061eb);color:white;
+    font-weight:700;cursor:pointer;transition:transform .2s
 }
-
-.section-heading h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 9px;
-}
-
-.section-heading p {
-    color: var(--muted);
-    max-width: 700px;
-    margin: auto;
-}
-
-.accent {
-    color: var(--accent);
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
-    gap: 20px;
-}
-
+.btn:hover {transform:translateY(-2px)}
+.btn.secondary {background:transparent;border:1px solid var(--border);color:var(--text)}
+.section-heading {text-align:center;margin-bottom:35px}
+.section-heading h2 {font-size:clamp(2rem,4vw,3rem);margin-bottom:8px}
+.section-heading p {color:var(--muted);max-width:700px;margin:auto}
+.grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:19px}
 .card {
-    padding: 25px;
-    border: 1px solid var(--border);
-    border-radius: 19px;
-    background: var(--card);
-    box-shadow: 0 12px 35px var(--shadow);
-    backdrop-filter: blur(12px);
-    transition: transform 0.25s, border-color 0.25s;
+    padding:24px;border:1px solid var(--border);border-radius:18px;
+    background:var(--card);box-shadow:0 12px 35px rgba(0,0,0,.09);
+    transition:transform .25s,border-color .25s
 }
-
-.card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(85,184,255,0.45);
-}
-
-.card h3 {
-    margin: 8px 0 10px;
-}
-
-.card p {
-    color: var(--muted);
-    font-size: 0.96rem;
-}
-
-.card-icon {
-    font-size: 2rem;
-}
-
+.card:hover {transform:translateY(-4px);border-color:var(--accent)}
+.card h3 {margin:8px 0}
+.card p {color:var(--muted);font-size:.96rem}
+.card-icon {font-size:2rem}
 .tag {
-    display: inline-block;
-    padding: 4px 10px;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    color: var(--accent);
-    font-size: 0.78rem;
-    margin: 10px 5px 0 0;
+    display:inline-block;padding:3px 9px;margin:8px 4px 0 0;
+    border:1px solid var(--border);border-radius:20px;color:var(--accent);font-size:.78rem
 }
-
-.about-box {
-    max-width: 850px;
-    margin: auto;
-    text-align: center;
-}
-
-.about-box p {
-    color: var(--muted);
-    font-size: 1.05rem;
-}
-
-.stat-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 15px;
-    margin-top: 28px;
-}
-
-.stat {
-    padding: 20px 12px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 15px;
-}
-
-.stat strong {
-    display: block;
-    color: var(--accent);
-    font-size: 1.15rem;
-}
-
-.stat span {
-    color: var(--muted);
-    font-size: 0.88rem;
-}
-
-/* CRICKET ZONE */
-
-.cricket-section {
-    background: linear-gradient(180deg, transparent, rgba(20,55,100,0.12), transparent);
-}
-
+.about-box {max-width:850px;margin:auto;text-align:center}
+.about-box p {color:var(--muted)}
+.stat-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin-top:25px}
+.stat {padding:18px 10px;background:var(--card);border:1px solid var(--border);border-radius:14px}
+.stat strong {display:block;color:var(--accent)}
+.stat span {font-size:.85rem;color:var(--muted)}
 .mi-banner {
-    padding: 35px;
-    border-radius: 23px;
-    border: 1px solid rgba(246,190,70,0.3);
-    background:
-        radial-gradient(circle at 85% 15%, rgba(246,190,70,0.16), transparent 30%),
-        linear-gradient(120deg, #071b47, #0c3274, #071b47);
-    color: #fff;
-    margin-bottom: 28px;
+    padding:32px;border-radius:22px;border:1px solid rgba(246,190,70,.3);
+    background:radial-gradient(circle at 85% 15%,rgba(246,190,70,.16),transparent 30%),linear-gradient(120deg,#071b47,#0c3274,#071b47);
+    color:white;margin-bottom:25px
 }
-
-.mi-banner h3 {
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
-    color: #ffd36d;
-    margin-bottom: 8px;
-}
-
-.mi-banner p {
-    color: #e0eaff;
-}
-
-.mi-label {
-    color: #ffd36d;
-    font-size: 0.82rem;
-    letter-spacing: 2px;
-    font-weight: 800;
-}
-
+.mi-banner h3 {font-size:clamp(1.7rem,4vw,2.4rem);color:#ffd36d}
+.mi-banner p {color:#e0eaff}
+.mi-label {color:#ffd36d;font-size:.8rem;letter-spacing:2px;font-weight:800}
 .player-art {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 65px;
-    height: 65px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, #1649a4, #14203f);
-    border: 1px solid rgba(255,211,109,0.45);
-    color: #ffd36d;
-    font-size: 1.25rem;
-    font-weight: 900;
+    display:flex;align-items:center;justify-content:center;width:65px;height:65px;
+    border-radius:18px;background:linear-gradient(135deg,#1649a4,#14203f);
+    border:1px solid rgba(255,211,109,.45);color:#ffd36d;font-weight:900;font-size:1.3rem
 }
-
-/* PLAYGROUND */
-
-.playground-intro {
-    margin-bottom: 26px;
-}
-
-.game-card {
-    overflow: hidden;
-}
-
-.game-card .card-icon {
-    margin-bottom: 5px;
-}
-
-.quiz-panel {
-    margin-top: 25px;
-    padding: clamp(20px, 4vw, 35px);
-    border-radius: 22px;
-    border: 1px solid var(--border);
-    background: var(--card);
-    box-shadow: 0 12px 35px var(--shadow);
-}
-
-.quiz-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 18px;
-}
-
-.quiz-score {
-    color: var(--accent);
-    font-weight: 800;
-}
-
-.quiz-categories {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 25px;
-}
-
+.quiz-panel {margin-top:24px;padding:clamp(18px,4vw,32px);border:1px solid var(--border);border-radius:22px;background:var(--card)}
+.quiz-top {display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px}
+.quiz-score {font-weight:800;color:var(--accent)}
+.categories {display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
 .category-btn {
-    border: 1px solid var(--border);
-    color: var(--text);
-    background: transparent;
-    padding: 8px 15px;
-    border-radius: 30px;
-    cursor: pointer;
+    padding:8px 13px;border-radius:25px;border:1px solid var(--border);
+    background:transparent;color:var(--text);cursor:pointer
 }
-
-.category-btn.active {
-    background: linear-gradient(110deg, #168de0, #7061eb);
-    color: white;
-    border-color: transparent;
-}
-
-.progress-track {
-    width: 100%;
-    height: 7px;
-    background: var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 14px 0 25px;
-}
-
-.progress-fill {
-    width: 0;
-    height: 100%;
-    background: linear-gradient(90deg, #55b8ff, #8c7bff);
-    transition: width 0.25s;
-}
-
-.question-text {
-    font-size: clamp(1.15rem, 3vw, 1.55rem);
-    margin-bottom: 20px;
-}
-
-.answers {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-}
-
+.category-btn.active {background:linear-gradient(110deg,#168de0,#7061eb);color:white;border-color:transparent}
+.progress-track {height:7px;background:var(--border);border-radius:10px;overflow:hidden;margin:14px 0 22px}
+.progress-fill {height:100%;width:0;background:linear-gradient(90deg,#55b8ff,#8c7bff);transition:width .25s}
+.question-text {font-size:clamp(1.1rem,3vw,1.5rem);margin-bottom:18px}
+.answers {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
 .answer-btn {
-    width: 100%;
-    padding: 13px 15px;
-    text-align: left;
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background 0.2s, border-color 0.2s;
+    padding:12px;text-align:left;border-radius:11px;border:1px solid var(--border);
+    background:transparent;color:var(--text);cursor:pointer
 }
-
-.answer-btn:hover:not(:disabled) {
-    border-color: var(--accent);
-    background: rgba(85,184,255,0.07);
+.answer-btn:hover:not(:disabled) {border-color:var(--accent)}
+.answer-btn:disabled {cursor:default;opacity:.95}
+.answer-btn.correct {border-color:#28b981;background:rgba(40,185,129,.12)}
+.answer-btn.wrong {border-color:#ee7777;background:rgba(238,119,119,.12)}
+.feedback {min-height:28px;margin:15px 0;font-weight:700}
+.feedback.good {color:#28b981}.feedback.bad {color:#ee7777}
+.hidden {display:none!important}
+.result {text-align:center;padding:22px 5px}
+.result-score {font-size:clamp(2.7rem,7vw,4.3rem);font-weight:900;color:var(--accent)}
+.muted {color:var(--muted);font-size:.9rem}
+.daily-box {
+    padding:25px;border-radius:19px;border:1px solid rgba(246,190,70,.35);
+    background:linear-gradient(120deg,rgba(13,45,89,.8),rgba(49,36,86,.8));color:white
 }
-
-.answer-btn:disabled {
-    cursor: default;
-    opacity: 0.92;
+.daily-box h3 {color:#ffd36d;font-size:1.5rem}
+.daily-box p {color:#e0eaff}
+.daily-box .answer-btn {color:white;border-color:rgba(255,255,255,.25)}
+.daily-box .answer-btn:hover:not(:disabled) {background:rgba(255,255,255,.1)}
+.daily-status {margin-top:12px;font-weight:700;min-height:28px}
+.name-input {
+    width:100%;max-width:320px;padding:10px 12px;border:1px solid var(--border);
+    border-radius:9px;background:var(--bg);color:var(--text);margin:12px 0
 }
-
-.answer-btn.correct {
-    border-color: #28b981;
-    background: rgba(40,185,129,0.12);
+.table-wrap {overflow-x:auto;margin-top:16px}
+table {width:100%;border-collapse:collapse;min-width:280px}
+th,td {padding:10px;text-align:left;border-bottom:1px solid var(--border)}
+th {color:var(--accent)}
+footer {padding:25px 8%;border-top:1px solid var(--border);text-align:center;color:var(--muted)}
+.reveal {opacity:0;transform:translateY(15px);transition:opacity .6s,transform .6s}
+.reveal.visible {opacity:1;transform:translateY(0)}
+.project-note {font-size:.83rem;color:var(--muted);margin-top:10px}
+.contact-card a {color:var(--accent);overflow-wrap:anywhere}
+@media(max-width:800px) {
+    nav {flex-wrap:wrap;padding:13px 5%}
+    .nav-links {justify-content:flex-start;gap:10px}
+    section {padding:60px 6%}
 }
-
-.answer-btn.wrong {
-    border-color: #ee7777;
-    background: rgba(238,119,119,0.12);
+@media(max-width:550px) {
+    .nav-links {gap:8px 12px}
+    .nav-links a {font-size:.8rem}
+    .answers {grid-template-columns:1fr}
+    .mi-banner {padding:23px}
+    h1 {letter-spacing:-1px}
 }
-
-.feedback {
-    min-height: 30px;
-    margin: 18px 0 12px;
-    font-weight: 700;
-}
-
-.feedback.good {
-    color: #28b981;
-}
-
-.feedback.bad {
-    color: #ee7777;
-}
-
-.quiz-actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px;
-    margin-top: 12px;
-}
-
-.quiz-result {
-    text-align: center;
-    padding: 25px 5px;
-}
-
-.result-score {
-    font-size: clamp(2.7rem, 7vw, 4.5rem);
-    font-weight: 900;
-    color: var(--accent);
-    margin: 12px 0;
-}
-
-.hidden {
-    display: none !important;
-}
-
-.project-note {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-top: 10px;
-}
-
-.contact-card a {
-    color: var(--accent);
-    overflow-wrap: anywhere;
-}
-
-footer {
-    padding: 28px 8%;
-    border-top: 1px solid var(--border);
-    text-align: center;
-    color: var(--muted);
-}
-
-.reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.65s ease, transform 0.65s ease;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-@media (max-width: 850px) {
-    nav {
-        align-items: flex-start;
-        flex-wrap: wrap;
-        padding: 13px 5%;
-    }
-
-    .nav-links {
-        justify-content: flex-start;
-        gap: 12px;
-    }
-
-    section {
-        padding: 65px 6%;
-    }
-
-    .hero {
-        min-height: 75vh;
-    }
-}
-
-@media (max-width: 550px) {
-    .nav-links {
-        gap: 9px 13px;
-    }
-
-    .nav-links a {
-        font-size: 0.82rem;
-    }
-
-    .answers {
-        grid-template-columns: 1fr;
-    }
-
-    .mi-banner {
-        padding: 25px 20px;
-    }
-
-    .card {
-        padding: 21px;
-    }
-
-    h1 {
-        letter-spacing: -1px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-    }
+@media(prefers-reduced-motion:reduce) {
+    *,*::before,*::after {scroll-behavior:auto!important;transition-duration:.01ms!important}
 }
 </style>
 </head>
-
 <body>
 
 <nav>
     <a href="#home" class="logo">TP<span>.</span></a>
-
     <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#interests">Interests</a>
-        <a href="#cricket">Cricket</a>
-        <a href="#playground">Playground</a>
-        <a href="#projects">Projects</a>
+        <a href="#about">About</a><a href="#skills">Skills</a>
+        <a href="#interests">Interests</a><a href="#cricket">Cricket</a>
+        <a href="#playground">Playground</a><a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-        <button class="theme-btn" id="themeToggle" aria-label="Toggle light and dark theme">☀️</button>
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">☀️</button>
     </div>
 </nav>
 
-<!-- HERO -->
-
 <section class="hero" id="home">
     <div class="hero-glow"></div>
-
     <div class="hero-content reveal">
         <span class="eyebrow">CLASS XI · PCM · COMPUTER SCIENCE</span>
-
         <h1>Hi, I'm <span class="gradient-text">Tishtup Pyke.</span></h1>
-
-        <p>
-            Student. Learner. Future Developer.
-            Exploring science, solving problems, learning to code,
-            and enjoying the game of cricket.
-        </p>
-
+        <p>Student. Learner. Future Developer. Exploring science, coding, problem-solving and the game of cricket.</p>
         <div class="hero-buttons">
-            <a href="#projects" class="btn">Explore My Work ↗</a>
-            <a href="#playground" class="btn secondary">Enter Playground 🎮</a>
+            <a class="btn" href="#projects">Explore My Work ↗</a>
+            <a class="btn secondary" href="#playground">Play a Quiz 🎮</a>
         </div>
     </div>
 </section>
-
-<!-- ABOUT -->
 
 <section id="about">
     <div class="section-heading reveal">
@@ -653,304 +209,134 @@ footer {
         <h2>More Than <span class="gradient-text">Just a Student</span></h2>
         <p>Learning, experimenting and building something new every day.</p>
     </div>
-
     <div class="about-box reveal">
-        <p>
-            I'm a Class XI student studying Physics, Chemistry and Mathematics,
-            with a growing interest in computer science and web development.
-            I enjoy understanding how things work, trying new ideas and
-            improving my skills step by step.
-        </p>
-
+        <p>I'm a Class XI student studying Physics, Chemistry and Mathematics, with an interest in computer science and web development. I enjoy understanding how things work, trying new ideas and improving my skills.</p>
         <div class="stat-grid">
-            <div class="stat">
-                <strong>Class XI</strong>
-                <span>Student Life</span>
-            </div>
-            <div class="stat">
-                <strong>PCM</strong>
-                <span>Science Stream</span>
-            </div>
-            <div class="stat">
-                <strong>Python</strong>
-                <span>Learning to Code</span>
-            </div>
-            <div class="stat">
-                <strong>Cricket 🏏</strong>
-                <span>A Childhood Passion</span>
-            </div>
+            <div class="stat"><strong>Class XI</strong><span>Student Life</span></div>
+            <div class="stat"><strong>PCM</strong><span>Science Stream</span></div>
+            <div class="stat"><strong>Python</strong><span>Learning to Code</span></div>
+            <div class="stat"><strong>Cricket 🏏</strong><span>Childhood Passion</span></div>
         </div>
     </div>
 </section>
 
-<!-- SKILLS -->
-
 <section id="skills">
-    <div class="section-heading reveal">
-        <span class="eyebrow">WHAT I'M EXPLORING</span>
-        <h2>My <span class="gradient-text">Skills</span></h2>
-        <p>Skills grow through curiosity, practice and consistency.</p>
-    </div>
-
+    <div class="section-heading reveal"><span class="eyebrow">WHAT I'M EXPLORING</span><h2>My <span class="gradient-text">Skills</span></h2><p>Skills grow through curiosity, practice and consistency.</p></div>
     <div class="grid">
-        <article class="card reveal">
-            <div class="card-icon">🐍</div>
-            <h3>Python</h3>
-            <p>Learning programming fundamentals and creating small applications.</p>
-            <span class="tag">Programming</span>
-        </article>
-
-        <article class="card reveal">
-            <div class="card-icon">🌐</div>
-            <h3>Web Development</h3>
-            <p>Building a personal website with Flask, HTML, CSS and JavaScript.</p>
-            <span class="tag">Flask</span>
-            <span class="tag">HTML & CSS</span>
-        </article>
-
-        <article class="card reveal">
-            <div class="card-icon">🧩</div>
-            <h3>Problem Solving</h3>
-            <p>Practising mathematical reasoning and breaking challenging problems into steps.</p>
-            <span class="tag">Logic</span>
-            <span class="tag">Mathematics</span>
-        </article>
+        <article class="card reveal"><div class="card-icon">🐍</div><h3>Python</h3><p>Learning programming fundamentals and creating small applications.</p><span class="tag">Programming</span></article>
+        <article class="card reveal"><div class="card-icon">🌐</div><h3>Web Development</h3><p>Building websites with Flask, HTML, CSS and JavaScript.</p><span class="tag">Flask</span><span class="tag">Web Design</span></article>
+        <article class="card reveal"><div class="card-icon">🧩</div><h3>Problem Solving</h3><p>Practising mathematical reasoning and logical thinking.</p><span class="tag">Logic</span></article>
     </div>
 </section>
-
-<!-- INTERESTS -->
 
 <section id="interests">
-    <div class="section-heading reveal">
-        <span class="eyebrow">LIFE OUTSIDE THE CLASSROOM</span>
-        <h2>Beyond <span class="gradient-text">Academics</span></h2>
-        <p>Things that keep me curious and motivated.</p>
-    </div>
-
+    <div class="section-heading reveal"><span class="eyebrow">LIFE OUTSIDE THE CLASSROOM</span><h2>Beyond <span class="gradient-text">Academics</span></h2></div>
     <div class="grid">
-        <article class="card reveal">
-            <div class="card-icon">🏏</div>
-            <h3>Cricket</h3>
-            <p>A sport I have loved since childhood. Cricket is one of my biggest passions.</p>
-        </article>
-
-        <article class="card reveal">
-            <div class="card-icon">💻</div>
-            <h3>Technology</h3>
-            <p>Exploring websites, programming and the technology behind everyday things.</p>
-        </article>
-
-        <article class="card reveal">
-            <div class="card-icon">📚</div>
-            <h3>Learning</h3>
-            <p>Discovering new concepts and getting better through practice and experience.</p>
-        </article>
+        <article class="card reveal"><div class="card-icon">🏏</div><h3>Cricket</h3><p>A sport I have loved since childhood and one of my biggest passions.</p></article>
+        <article class="card reveal"><div class="card-icon">💻</div><h3>Technology</h3><p>Exploring websites, programming and everyday technology.</p></article>
+        <article class="card reveal"><div class="card-icon">📚</div><h3>Learning</h3><p>Discovering new concepts and improving through practice.</p></article>
     </div>
 </section>
 
-<!-- CRICKET ZONE -->
-
-<section class="cricket-section" id="cricket">
-    <div class="section-heading reveal">
-        <span class="eyebrow">MY FAVOURITE GAME</span>
-        <h2>The <span class="gradient-text">Cricket Zone</span></h2>
-        <p>Big matches, unforgettable players and a passion for cricket.</p>
-    </div>
-
+<section id="cricket">
+    <div class="section-heading reveal"><span class="eyebrow">MY FAVOURITE GAME</span><h2>The <span class="gradient-text">Cricket Zone</span></h2><p>Big matches, unforgettable players and a passion for cricket.</p></div>
     <div class="mi-banner reveal">
-        <div class="mi-label">MY FAVOURITE IPL TEAM</div>
-        <h3>🔵 Mumbai Indians</h3>
-        <p>
-            Blue and gold, big moments and memories that make the IPL special.
-            Mumbai Indians have a special place in my cricket fandom.
-        </p>
-        <p class="project-note">
-            A fan-made tribute, not an official team website.
-        </p>
+        <div class="mi-label">MY FAVOURITE IPL TEAM</div><h3>🔵 Mumbai Indians</h3>
+        <p>Blue and gold, big moments and memories that make the IPL special.</p>
+        <p class="project-note">Fan-made tribute. Not an official team website.</p>
     </div>
-
     <div class="grid">
-        <article class="card reveal">
-            <div class="player-art">RS</div>
-            <h3>Rohit Sharma</h3>
-            <p>Known for elegant batting, big scores and leadership.</p>
-            <span class="tag">Hitman</span>
-        </article>
-
-        <article class="card reveal">
-            <div class="player-art">VK</div>
-            <h3>Virat Kohli</h3>
-            <p>A celebrated batter known for intensity and chasing targets.</p>
-            <span class="tag">Chase Master</span>
-        </article>
-
-        <article class="card reveal">
-            <div class="player-art">JB</div>
-            <h3>Jasprit Bumrah</h3>
-            <p>An outstanding fast bowler known for accuracy and difficult overs.</p>
-            <span class="tag">Yorker Specialist</span>
-        </article>
-
-        <article class="card reveal">
-            <div class="player-art">HP</div>
-            <h3>Hardik Pandya</h3>
-            <p>An all-rounder who contributes with both bat and ball.</p>
-            <span class="tag">All-Rounder</span>
-        </article>
+        <article class="card reveal"><div class="player-art">RS</div><h3>Rohit Sharma</h3><p>Known for elegant batting, big scores and leadership.</p><span class="tag">Hitman</span></article>
+        <article class="card reveal"><div class="player-art">VK</div><h3>Virat Kohli</h3><p>A celebrated batter known for intensity and chasing targets.</p><span class="tag">Chase Master</span></article>
+        <article class="card reveal"><div class="player-art">JB</div><h3>Jasprit Bumrah</h3><p>A fast bowler known for accuracy and difficult overs.</p><span class="tag">Bowling</span></article>
+        <article class="card reveal"><div class="player-art">HP</div><h3>Hardik Pandya</h3><p>An all-rounder who contributes with both bat and ball.</p><span class="tag">All-Rounder</span></article>
     </div>
 </section>
-
-<!-- INTERACTIVE PLAYGROUND -->
 
 <section id="playground">
     <div class="section-heading reveal">
         <span class="eyebrow">YOUR TURN TO PLAY</span>
         <h2>Welcome to the <span class="gradient-text">Playground</span> 🎮</h2>
-        <p>
-            Take a break and challenge yourself with science, general knowledge
-            and cricket trivia. Pick a category, earn points and try again!
-        </p>
+        <p>Try a daily cricket question, earn quiz points and share your score with friends.</p>
     </div>
 
-    <div class="grid playground-intro">
-        <article class="card game-card reveal">
-            <div class="card-icon">🧪</div>
-            <h3>Science Challenge</h3>
-            <p>Test your knowledge of Physics, Chemistry and basic science.</p>
-        </article>
-
-        <article class="card game-card reveal">
-            <div class="card-icon">🌍</div>
-            <h3>General Knowledge</h3>
-            <p>Answer questions about the world, space and everyday knowledge.</p>
-        </article>
-
-        <article class="card game-card reveal">
-            <div class="card-icon">🏏</div>
-            <h3>Cricket Challenge</h3>
-            <p>Take on cricket questions about rules, players and the game.</p>
-        </article>
+    <!-- DAILY CHALLENGE -->
+    <div class="daily-box reveal">
+        <div class="mi-label">TODAY'S CHALLENGE</div>
+        <h3>🏏 Daily Cricket Question</h3>
+        <p id="dailyDate"></p>
+        <h3 id="dailyQuestion" style="color:white;font-size:1.2rem;margin-top:14px">Loading question...</h3>
+        <div class="answers" id="dailyAnswers" style="margin-top:16px"></div>
+        <div class="daily-status" id="dailyStatus" aria-live="polite"></div>
+        <p class="project-note">One attempt per day in this browser. Clearing browser data may reset it.</p>
     </div>
 
+    <!-- MAIN QUIZ -->
     <div class="quiz-panel reveal">
         <div class="quiz-top">
-            <div>
-                <h3>Quiz Arena</h3>
-                <p style="color:var(--muted)">Choose a category and start playing.</p>
-            </div>
+            <div><h3>Quiz Arena</h3><p class="muted">Choose a category and start playing.</p></div>
             <div class="quiz-score" id="totalPoints">⭐ Points: 0</div>
         </div>
-
-        <div class="quiz-categories" role="group" aria-label="Quiz categories">
+        <div class="categories">
             <button class="category-btn active" data-category="science">🧪 Science</button>
             <button class="category-btn" data-category="general">🌍 General Knowledge</button>
             <button class="category-btn" data-category="cricket">🏏 Cricket</button>
         </div>
-
         <div id="quizGame">
-            <div class="quiz-top">
-                <span id="questionCount">Question 1</span>
-                <span class="quiz-score" id="roundScore">Score: 0</span>
-            </div>
-
-            <div class="progress-track">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
-
+            <div class="quiz-top"><span id="questionCount">Question 1</span><span class="quiz-score" id="roundScore">Score: 0</span></div>
+            <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
             <h3 class="question-text" id="questionText">Loading question...</h3>
-
             <div class="answers" id="answerOptions"></div>
-
             <div class="feedback" id="feedback" aria-live="polite"></div>
-
-            <div class="quiz-actions">
+            <div class="actions">
                 <button class="btn hidden" id="nextQuestion">Next Question →</button>
                 <button class="btn secondary" id="restartQuiz">Restart Quiz ↻</button>
             </div>
         </div>
-
-        <div id="quizResult" class="quiz-result hidden" aria-live="polite">
-            <div class="card-icon">🏆</div>
-            <h3 id="resultHeading">Challenge Complete!</h3>
+        <div id="quizResult" class="result hidden" aria-live="polite">
+            <div class="card-icon">🏆</div><h3 id="resultHeading">Challenge Complete!</h3>
             <div class="result-score" id="resultScore">0/5</div>
-            <p id="resultMessage"></p>
-            <p class="project-note" id="pointsEarned"></p>
-            <div style="margin-top:20px">
-                <button class="btn" id="playAgain">Play Again ↻</button>
+            <p id="resultMessage"></p><p class="muted" id="pointsEarned"></p>
+            <input class="name-input" id="playerName" maxlength="20" placeholder="Enter a nickname for the leaderboard" aria-label="Leaderboard nickname">
+            <div class="actions" style="justify-content:center">
+                <button class="btn" id="saveScore">Save Local Score</button>
+                <button class="btn secondary" id="shareScore">Share My Score ↗</button>
+                <button class="btn secondary" id="playAgain">Play Again ↻</button>
             </div>
+            <p class="project-note" id="shareStatus" aria-live="polite"></p>
         </div>
     </div>
 
-    <p class="project-note" style="text-align:center">
-        Your points are saved in this browser on this device.
-        They are not shared with a server or other visitors.
-    </p>
+    <!-- LOCAL LEADERBOARD -->
+    <div class="quiz-panel reveal">
+        <div class="quiz-top">
+            <div><h3>🏆 Local Leaderboard</h3><p class="muted">Your saved scores on this browser.</p></div>
+            <button class="btn secondary" id="clearLeaderboard">Clear Scores</button>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>#</th><th>Player</th><th>Category</th><th>Score</th></tr></thead>
+                <tbody id="leaderboardBody"></tbody>
+            </table>
+        </div>
+        <p class="project-note">This is a local leaderboard, not a global ranking. Other visitors cannot see your saved scores.</p>
+    </div>
 </section>
-
-<!-- PROJECTS -->
 
 <section id="projects">
-    <div class="section-heading reveal">
-        <span class="eyebrow">THINGS I'M BUILDING</span>
-        <h2>My <span class="gradient-text">Projects</span></h2>
-        <p>Small steps today, bigger ideas for tomorrow.</p>
-    </div>
-
+    <div class="section-heading reveal"><span class="eyebrow">THINGS I'M BUILDING</span><h2>My <span class="gradient-text">Projects</span></h2></div>
     <div class="grid">
-        <article class="card reveal">
-            <div class="card-icon">🖥️</div>
-            <h3>Personal Portfolio</h3>
-            <p>This website introduces my interests, skills, projects and interactive activities.</p>
-            <span class="tag">Flask</span>
-            <span class="tag">Web Design</span>
-        </article>
-
-        <article class="card reveal">
-            <div class="card-icon">⚙️</div>
-            <h3>Python Experiments</h3>
-            <p>Small programming exercises to strengthen my understanding of coding.</p>
-            <span class="tag">Python</span>
-        </article>
-
-        <article class="card reveal">
-            <div class="card-icon">🚀</div>
-            <h3>Future Projects</h3>
-            <p>More ideas, experiments and useful projects as I continue learning.</p>
-            <span class="tag">Coming Soon</span>
-        </article>
+        <article class="card reveal"><div class="card-icon">🖥️</div><h3>Personal Portfolio</h3><p>A website introducing my interests, skills and interactive activities.</p><span class="tag">Flask</span></article>
+        <article class="card reveal"><div class="card-icon">⚙️</div><h3>Python Experiments</h3><p>Small programming exercises to strengthen my coding skills.</p><span class="tag">Python</span></article>
+        <article class="card reveal"><div class="card-icon">🚀</div><h3>Future Projects</h3><p>More ideas and useful projects as I continue learning.</p><span class="tag">Coming Soon</span></article>
     </div>
 </section>
 
-<!-- CONTACT -->
-
 <section id="contact">
-    <div class="section-heading reveal">
-        <span class="eyebrow">LET'S CONNECT</span>
-        <h2>Find Me <span class="gradient-text">Online</span></h2>
-        <p>Check out my coding work and social profile.</p>
-    </div>
-
+    <div class="section-heading reveal"><span class="eyebrow">LET'S CONNECT</span><h2>Find Me <span class="gradient-text">Online</span></h2><p>Check out my coding work and social profile.</p></div>
     <div class="grid">
-        <article class="card contact-card reveal">
-            <div class="card-icon">🐙</div>
-            <h3>GitHub</h3>
-            <p>Explore my repositories and coding projects.</p>
-            <p style="margin-top:14px">
-                <a href="https://github.com/pyketishtup-sketch"
-                   target="_blank" rel="noopener noreferrer">
-                    @pyketishtup-sketch ↗
-                </a>
-            </p>
-        </article>
-
-        <article class="card contact-card reveal">
-            <div class="card-icon">📸</div>
-            <h3>Instagram</h3>
-            <p>Find my Instagram profile.</p>
-            <p style="margin-top:14px">
-                <span class="accent">tishtup._.1845._.pyke</span>
-            </p>
-        </article>
+        <article class="card contact-card reveal"><div class="card-icon">🐙</div><h3>GitHub</h3><p>Explore my repositories and projects.</p><p style="margin-top:14px"><a href="https://github.com/pyketishtup-sketch" target="_blank" rel="noopener noreferrer">@pyketishtup-sketch ↗</a></p></article>
+        <article class="card contact-card reveal"><div class="card-icon">📸</div><h3>Instagram</h3><p>My Instagram username:</p><p class="accent" style="margin-top:14px">tishtup._.1845._.pyke</p></article>
     </div>
 </section>
 
@@ -960,373 +346,286 @@ footer {
 </footer>
 
 <script>
-/* THEME TOGGLE */
-
+/* THEME */
 const themeToggle = document.getElementById("themeToggle");
-
 function setTheme(theme) {
     document.body.classList.toggle("light", theme === "light");
     themeToggle.textContent = theme === "light" ? "🌙" : "☀️";
-    themeToggle.setAttribute(
-        "aria-label",
-        theme === "light" ? "Switch to dark theme" : "Switch to light theme"
-    );
 }
-
 let savedTheme = "dark";
+try { savedTheme = localStorage.getItem("tishtup-theme") || "dark"; } catch(e) {}
+setTheme(savedTheme);
+themeToggle.addEventListener("click", function() {
+    const next = document.body.classList.contains("light") ? "dark" : "light";
+    setTheme(next);
+    try { localStorage.setItem("tishtup-theme", next); } catch(e) {}
+});
 
-try {
-    savedTheme = localStorage.getItem("tishtup-theme") || "dark";
-} catch (error) {
-    savedTheme = "dark";
+/* FOOTER AND ANIMATIONS */
+document.getElementById("year").textContent = new Date().getFullYear();
+if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {threshold:0.08});
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+} else {
+    document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
 }
 
-setTheme(savedTheme);
-
-themeToggle.addEventListener("click", function () {
-    const newTheme = document.body.classList.contains("light") ? "dark" : "light";
-    setTheme(newTheme);
-
-    try {
-        localStorage.setItem("tishtup-theme", newTheme);
-    } catch (error) {
-        // Theme still works for this page even if storage is unavailable.
-    }
-});
-
-
-/* FOOTER YEAR */
-
-document.getElementById("year").textContent = new Date().getFullYear();
-
-
-/* SCROLL REVEAL */
-
-const revealObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            revealObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.08 });
-
-document.querySelectorAll(".reveal").forEach(function (element) {
-    revealObserver.observe(element);
-});
-
-
-/* QUIZ QUESTION BANK */
-
+/* QUESTION BANK */
 const quizData = {
     science: [
-        {
-            q: "What is the SI unit of force?",
-            options: ["Joule", "Newton", "Watt", "Pascal"],
-            answer: 1,
-            explanation: "Force is measured in newtons (N)."
-        },
-        {
-            q: "Which particle has a negative electric charge?",
-            options: ["Proton", "Neutron", "Electron", "Nucleus"],
-            answer: 2,
-            explanation: "An electron carries a negative electric charge."
-        },
-        {
-            q: "What is the chemical formula of water?",
-            options: ["CO₂", "H₂O", "O₂", "NaCl"],
-            answer: 1,
-            explanation: "A water molecule contains two hydrogen atoms and one oxygen atom."
-        },
-        {
-            q: "Which quantity is measured in watts?",
-            options: ["Power", "Energy", "Force", "Momentum"],
-            answer: 0,
-            explanation: "The watt is the SI unit of power."
-        },
-        {
-            q: "What is the approximate speed of light in vacuum?",
-            options: [
-                "3 × 10⁶ m/s",
-                "3 × 10⁸ m/s",
-                "3 × 10⁴ m/s",
-                "3 × 10¹⁰ m/s"
-            ],
-            answer: 1,
-            explanation: "The speed of light in vacuum is approximately 3 × 10⁸ m/s."
-        }
+        {q:"What is the SI unit of force?",o:["Joule","Newton","Watt","Pascal"],a:1,e:"Force is measured in newtons (N)."},
+        {q:"Which particle has a negative electric charge?",o:["Proton","Neutron","Electron","Nucleus"],a:2,e:"An electron carries a negative electric charge."},
+        {q:"What is the chemical formula of water?",o:["CO₂","H₂O","O₂","NaCl"],a:1,e:"A water molecule contains two hydrogen atoms and one oxygen atom."},
+        {q:"Which quantity is measured in watts?",o:["Power","Energy","Force","Momentum"],a:0,e:"The watt is the SI unit of power."},
+        {q:"What is the approximate speed of light in vacuum?",o:["3 × 10⁶ m/s","3 × 10⁸ m/s","3 × 10⁴ m/s","3 × 10¹⁰ m/s"],a:1,e:"The speed of light is approximately 3 × 10⁸ m/s."}
     ],
-
     general: [
-        {
-            q: "Which planet is known as the Red Planet?",
-            options: ["Venus", "Jupiter", "Mars", "Mercury"],
-            answer: 2,
-            explanation: "Mars appears reddish because of iron oxide on its surface."
-        },
-        {
-            q: "What is the capital of India?",
-            options: ["Mumbai", "New Delhi", "Kolkata", "Chennai"],
-            answer: 1,
-            explanation: "New Delhi is the capital of India."
-        },
-        {
-            q: "How many sides does a hexagon have?",
-            options: ["Five", "Six", "Seven", "Eight"],
-            answer: 1,
-            explanation: "A hexagon has six sides."
-        },
-        {
-            q: "Which is the largest ocean on Earth?",
-            options: ["Atlantic", "Indian", "Arctic", "Pacific"],
-            answer: 3,
-            explanation: "The Pacific Ocean is the largest ocean on Earth."
-        },
-        {
-            q: "Which instrument is used to measure temperature?",
-            options: ["Barometer", "Thermometer", "Ammeter", "Hygrometer"],
-            answer: 1,
-            explanation: "A thermometer is used to measure temperature."
-        }
+        {q:"Which planet is known as the Red Planet?",o:["Venus","Jupiter","Mars","Mercury"],a:2,e:"Mars appears reddish because of iron oxide on its surface."},
+        {q:"What is the capital of India?",o:["Mumbai","New Delhi","Kolkata","Chennai"],a:1,e:"New Delhi is the capital of India."},
+        {q:"How many sides does a hexagon have?",o:["Five","Six","Seven","Eight"],a:1,e:"A hexagon has six sides."},
+        {q:"Which is the largest ocean on Earth?",o:["Atlantic","Indian","Arctic","Pacific"],a:3,e:"The Pacific Ocean is the largest ocean."},
+        {q:"Which instrument measures temperature?",o:["Barometer","Thermometer","Ammeter","Hygrometer"],a:1,e:"A thermometer measures temperature."}
     ],
-
     cricket: [
-        {
-            q: "How many players from one team are on the field in a standard cricket match?",
-            options: ["9", "10", "11", "12"],
-            answer: 2,
-            explanation: "A standard cricket team has eleven players on the field."
-        },
-        {
-            q: "How many legal deliveries are there in a standard over?",
-            options: ["Four", "Five", "Six", "Eight"],
-            answer: 2,
-            explanation: "A standard over consists of six legal deliveries."
-        },
-        {
-            q: "What does LBW stand for?",
-            options: [
-                "Long Ball Wide",
-                "Leg Before Wicket",
-                "Last Batting Wicket",
-                "Line Before Wicket"
-            ],
-            answer: 1,
-            explanation: "LBW stands for Leg Before Wicket."
-        },
-        {
-            q: "How many runs does a batter normally score for a boundary hit along the ground?",
-            options: ["Two", "Three", "Four", "Six"],
-            answer: 2,
-            explanation: "A boundary reached along the ground scores four runs."
-        },
-        {
-            q: "Which of these is a type of dismissal in cricket?",
-            options: ["Checkmate", "Offside", "Bowled", "Touchdown"],
-            answer: 2,
-            explanation: "Bowled is a dismissal in which the ball hits the stumps and dislodges the bails."
-        }
+        {q:"How many players from one team are on the field in a standard cricket match?",o:["9","10","11","12"],a:2,e:"A standard cricket team has eleven players on the field."},
+        {q:"How many legal deliveries are there in a standard over?",o:["Four","Five","Six","Eight"],a:2,e:"A standard over consists of six legal deliveries."},
+        {q:"What does LBW stand for?",o:["Long Ball Wide","Leg Before Wicket","Last Batting Wicket","Line Before Wicket"],a:1,e:"LBW stands for Leg Before Wicket."},
+        {q:"How many runs is a boundary worth when the ball reaches it along the ground?",o:["Two","Three","Four","Six"],a:2,e:"A boundary reached along the ground scores four runs."},
+        {q:"Which is a type of dismissal in cricket?",o:["Checkmate","Offside","Bowled","Touchdown"],a:2,e:"Bowled is a dismissal in cricket."}
     ]
 };
 
-
-/* QUIZ STATE */
-
-let currentCategory = "science";
-let questionIndex = 0;
-let roundScore = 0;
-let answered = false;
-let roundPoints = 0;
-let totalPoints = 0;
-
-try {
-    totalPoints = Number(localStorage.getItem("tishtup-quiz-points")) || 0;
-} catch (error) {
-    totalPoints = 0;
-}
-
-const questionText = document.getElementById("questionText");
-const answerOptions = document.getElementById("answerOptions");
-const feedback = document.getElementById("feedback");
-const questionCount = document.getElementById("questionCount");
-const roundScoreDisplay = document.getElementById("roundScore");
-const progressFill = document.getElementById("progressFill");
-const nextButton = document.getElementById("nextQuestion");
-const restartButton = document.getElementById("restartQuiz");
-const quizGame = document.getElementById("quizGame");
-const quizResult = document.getElementById("quizResult");
-
-
-function updateTotalPoints() {
-    document.getElementById("totalPoints").textContent =
-        "⭐ Points: " + totalPoints;
-}
-
-
-function saveTotalPoints() {
+/* SAFE LOCAL STORAGE HELPERS */
+function readJSON(key, fallback) {
     try {
-        localStorage.setItem("tishtup-quiz-points", String(totalPoints));
-    } catch (error) {
-        // The quiz remains playable if browser storage is unavailable.
+        const value = localStorage.getItem(key);
+        return value ? JSON.parse(value) : fallback;
+    } catch(e) { return fallback; }
+}
+function writeJSON(key, value) {
+    try { localStorage.setItem(key, JSON.stringify(value)); } catch(e) {}
+}
+let totalPoints = 0;
+try { totalPoints = Number(localStorage.getItem("tishtup-quiz-points")) || 0; } catch(e) {}
+
+function updatePoints() {
+    document.getElementById("totalPoints").textContent = "⭐ Points: " + totalPoints;
+}
+function awardPoints(points) {
+    totalPoints += points;
+    try { localStorage.setItem("tishtup-quiz-points", String(totalPoints)); } catch(e) {}
+    updatePoints();
+}
+
+/* QUIZ ENGINE */
+let category = "science", index = 0, score = 0, roundPoints = 0, answered = false;
+const $ = id => document.getElementById(id);
+function startQuiz(nextCategory) {
+    category = nextCategory || category;
+    index = 0; score = 0; roundPoints = 0; answered = false;
+    document.querySelectorAll(".category-btn").forEach(btn =>
+        btn.classList.toggle("active", btn.dataset.category === category)
+    );
+    $("quizGame").classList.remove("hidden");
+    $("quizResult").classList.add("hidden");
+    renderQuestion();
+}
+function renderQuestion() {
+    const questions = quizData[category];
+    if (index >= questions.length) { finishQuiz(); return; }
+    const q = questions[index];
+    answered = false;
+    $("questionCount").textContent = "Question " + (index + 1) + " of " + questions.length;
+    $("roundScore").textContent = "Score: " + score;
+    $("progressFill").style.width = (index / questions.length * 100) + "%";
+    $("questionText").textContent = q.q;
+    $("answerOptions").innerHTML = "";
+    $("feedback").textContent = "";
+    $("feedback").className = "feedback";
+    $("nextQuestion").classList.add("hidden");
+
+    q.o.forEach((option, i) => {
+        const btn = document.createElement("button");
+        btn.className = "answer-btn";
+        btn.textContent = String.fromCharCode(65 + i) + ". " + option;
+        btn.addEventListener("click", () => chooseAnswer(i, btn));
+        $("answerOptions").appendChild(btn);
+    });
+}
+function chooseAnswer(choice, selected) {
+    if (answered) return;
+    answered = true;
+    const q = quizData[category][index];
+    const buttons = $("answerOptions").querySelectorAll("button");
+    buttons.forEach(btn => btn.disabled = true);
+    buttons[q.a].classList.add("correct");
+
+    if (choice === q.a) {
+        score++; roundPoints += 10;
+        $("feedback").textContent = "Correct! +10 points. " + q.e;
+        $("feedback").className = "feedback good";
+    } else {
+        selected.classList.add("wrong");
+        $("feedback").textContent = "Not quite. " + q.e;
+        $("feedback").className = "feedback bad";
+    }
+    $("roundScore").textContent = "Score: " + score;
+    $("progressFill").style.width = ((index + 1) / quizData[category].length * 100) + "%";
+    $("nextQuestion").textContent = index === quizData[category].length - 1 ? "See Results 🏆" : "Next Question →";
+    $("nextQuestion").classList.remove("hidden");
+}
+function finishQuiz() {
+    $("quizGame").classList.add("hidden");
+    $("quizResult").classList.remove("hidden");
+    awardPoints(roundPoints);
+    const total = quizData[category].length;
+    const percent = Math.round(score / total * 100);
+    $("resultScore").textContent = score + "/" + total;
+    $("resultHeading").textContent = percent === 100 ? "Perfect Score! 🏆" : percent >= 60 ? "Well Played! 🎉" : "Keep Practising! 💪";
+    $("resultMessage").textContent = "You answered " + score + " out of " + total + " questions correctly (" + percent + "%).";
+    $("pointsEarned").textContent = "You earned " + roundPoints + " points this round. Total points: " + totalPoints + ".";
+    $("shareStatus").textContent = "";
+}
+document.querySelectorAll(".category-btn").forEach(btn =>
+    btn.addEventListener("click", () => startQuiz(btn.dataset.category))
+);
+$("nextQuestion").addEventListener("click", () => {
+    if (answered) { index++; renderQuestion(); }
+});
+$("restartQuiz").addEventListener("click", () => startQuiz(category));
+$("playAgain").addEventListener("click", () => startQuiz(category));
+
+/* SHARE SCORE */
+function scoreMessage() {
+    return "I scored " + score + "/" + quizData[category].length +
+        " in the " + category.toUpperCase() + " Quiz on Tishtup's Quiz Arena! 🏆 Can you beat my score?";
+}
+async function shareCurrentScore() {
+    const message = scoreMessage();
+    try {
+        if (navigator.share) {
+            await navigator.share({title:"My Quiz Score", text:message, url:window.location.href});
+            $("shareStatus").textContent = "Thanks for sharing your challenge!";
+        } else if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(message + " " + window.location.href);
+            $("shareStatus").textContent = "Score and website link copied. Share it with your friends!";
+        } else {
+            window.prompt("Copy your score and share it with friends:", message + " " + window.location.href);
+        }
+    } catch(e) {
+        if (e.name !== "AbortError") $("shareStatus").textContent = "Sharing was unavailable. You can copy your score manually.";
     }
 }
+$("shareScore").addEventListener("click", shareCurrentScore);
 
+/* LOCAL LEADERBOARD */
+function renderLeaderboard() {
+    const rows = readJSON("tishtup-local-leaderboard", []);
+    const body = $("leaderboardBody");
+    body.innerHTML = "";
+    if (!rows.length) {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.colSpan = 4; td.textContent = "No saved scores yet. Finish a quiz to add your first score.";
+        tr.appendChild(td); body.appendChild(tr); return;
+    }
+    rows.slice().sort((a,b) => b.score - a.score).slice(0,10).forEach((row,i) => {
+        const tr = document.createElement("tr");
+        [String(i+1), row.name, row.category, row.score + "/" + row.total].forEach(value => {
+            const td = document.createElement("td"); td.textContent = value; tr.appendChild(td);
+        });
+        body.appendChild(tr);
+    });
+}
+$("saveScore").addEventListener("click", () => {
+    const name = $("playerName").value.trim().slice(0,20) || "Player";
+    const rows = readJSON("tishtup-local-leaderboard", []);
+    rows.push({name:name, category:category, score:score, total:quizData[category].length, date:new Date().toISOString()});
+    writeJSON("tishtup-local-leaderboard", rows.slice(-50));
+    renderLeaderboard();
+    $("shareStatus").textContent = "Your score has been saved in this browser.";
+});
+$("clearLeaderboard").addEventListener("click", () => {
+    if (confirm("Clear all scores saved in this browser?")) {
+        writeJSON("tishtup-local-leaderboard", []);
+        renderLeaderboard();
+    }
+});
+renderLeaderboard();
+updatePoints();
+startQuiz("science");
 
-function renderQuestion() {
-    const questions = quizData[currentCategory];
+/* DAILY CRICKET CHALLENGE */
+const dailyQuestions = [
+    {q:"How many legal balls are there in a standard over?",o:["4","5","6","8"],a:2,e:"A standard over has six legal deliveries."},
+    {q:"What does LBW stand for?",o:["Leg Before Wicket","Long Ball Wide","Last Batting Wicket","Line Before Wicket"],a:0,e:"LBW means Leg Before Wicket."},
+    {q:"How many players are in a standard cricket team?",o:["9","10","11","12"],a:2,e:"A standard team has eleven players."},
+    {q:"How many runs does a batter score for a six?",o:["4","5","6","7"],a:2,e:"A six is awarded when the ball clears the boundary without bouncing."},
+    {q:"Which player is known as the Hitman?",o:["Virat Kohli","Rohit Sharma","Jasprit Bumrah","Hardik Pandya"],a:1,e:"Rohit Sharma is popularly known as the Hitman."},
+    {q:"What is the term for taking three wickets with three consecutive deliveries?",o:["Hat-trick","Triple play","Powerplay","Maiden"],a:0,e:"Three wickets in three consecutive deliveries is a hat-trick."},
+    {q:"Which equipment does a batter use to hit the ball?",o:["Racket","Bat","Club","Stick"],a:1,e:"A batter uses a cricket bat."}
+];
 
-    if (questionIndex >= questions.length) {
-        finishQuiz();
+function localDateKey() {
+    const d = new Date();
+    return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+}
+function dailyQuestionForToday() {
+    const key = localDateKey();
+    let hash = 0;
+    for (let i=0;i<key.length;i++) hash = (hash * 31 + key.charCodeAt(i)) >>> 0;
+    return dailyQuestions[hash % dailyQuestions.length];
+}
+function initDailyChallenge() {
+    const key = localDateKey();
+    const q = dailyQuestionForToday();
+    $("dailyDate").textContent = "Date: " + key + " · One daily question";
+    $("dailyQuestion").textContent = q.q;
+    const answers = $("dailyAnswers");
+    answers.innerHTML = "";
+    const saved = readJSON("tishtup-daily-result", null);
+
+    if (saved && saved.date === key) {
+        q.o.forEach((option,i) => {
+            const btn = document.createElement("button");
+            btn.className = "answer-btn" + (i === q.a ? " correct" : "");
+            btn.textContent = String.fromCharCode(65+i) + ". " + option;
+            btn.disabled = true;
+            answers.appendChild(btn);
+        });
+        $("dailyStatus").textContent = saved.correct
+            ? "You already completed today's challenge! Correct answer — well played! ⭐"
+            : "Today's attempt is complete. " + q.e;
         return;
     }
 
-    const question = questions[questionIndex];
-    answered = false;
-
-    questionCount.textContent =
-        "Question " + (questionIndex + 1) + " of " + questions.length;
-
-    roundScoreDisplay.textContent = "Score: " + roundScore;
-    progressFill.style.width =
-        (questionIndex / questions.length * 100) + "%";
-
-    questionText.textContent = question.q;
-    answerOptions.innerHTML = "";
-    feedback.textContent = "";
-    feedback.className = "feedback";
-    nextButton.classList.add("hidden");
-
-    question.options.forEach(function (option, index) {
-        const button = document.createElement("button");
-        button.className = "answer-btn";
-        button.textContent = String.fromCharCode(65 + index) + ". " + option;
-
-        button.addEventListener("click", function () {
-            chooseAnswer(index, button);
+    q.o.forEach((option,i) => {
+        const btn = document.createElement("button");
+        btn.className = "answer-btn";
+        btn.textContent = String.fromCharCode(65+i) + ". " + option;
+        btn.addEventListener("click", () => {
+            answers.querySelectorAll("button").forEach(b => b.disabled = true);
+            answers.children[q.a].classList.add("correct");
+            const correct = i === q.a;
+            if (!correct) btn.classList.add("wrong");
+            if (correct) awardPoints(10);
+            writeJSON("tishtup-daily-result", {date:key, correct:correct});
+            $("dailyStatus").textContent = correct
+                ? "Correct! +10 points. " + q.e
+                : "Good try! " + q.e;
         });
-
-        answerOptions.appendChild(button);
+        answers.appendChild(btn);
     });
 }
-
-
-function chooseAnswer(selectedIndex, selectedButton) {
-    if (answered) return;
-
-    answered = true;
-
-    const question = quizData[currentCategory][questionIndex];
-    const allButtons = answerOptions.querySelectorAll(".answer-btn");
-
-    allButtons.forEach(function (button) {
-        button.disabled = true;
-    });
-
-    allButtons[question.answer].classList.add("correct");
-
-    if (selectedIndex === question.answer) {
-        roundScore += 1;
-        roundPoints += 10;
-        feedback.textContent = "Correct! +10 points. " + question.explanation;
-        feedback.className = "feedback good";
-    } else {
-        selectedButton.classList.add("wrong");
-        feedback.textContent = "Not quite. " + question.explanation;
-        feedback.className = "feedback bad";
-    }
-
-    roundScoreDisplay.textContent = "Score: " + roundScore;
-    progressFill.style.width =
-        ((questionIndex + 1) / quizData[currentCategory].length * 100) + "%";
-
-    nextButton.textContent =
-        questionIndex === quizData[currentCategory].length - 1
-        ? "See Results 🏆"
-        : "Next Question →";
-
-    nextButton.classList.remove("hidden");
-}
-
-
-function finishQuiz() {
-    quizGame.classList.add("hidden");
-    quizResult.classList.remove("hidden");
-
-    totalPoints += roundPoints;
-    saveTotalPoints();
-    updateTotalPoints();
-
-    const totalQuestions = quizData[currentCategory].length;
-    const percentage = Math.round((roundScore / totalQuestions) * 100);
-
-    document.getElementById("resultScore").textContent =
-        roundScore + "/" + totalQuestions;
-
-    document.getElementById("resultHeading").textContent =
-        percentage === 100 ? "Perfect Score! 🏆" :
-        percentage >= 60 ? "Well Played! 🎉" :
-        "Keep Practising! 💪";
-
-    document.getElementById("resultMessage").textContent =
-        "You answered " + roundScore + " out of " + totalQuestions +
-        " questions correctly (" + percentage + "%).";
-
-    document.getElementById("pointsEarned").textContent =
-        "You earned " + roundPoints +
-        " points this round. Your total points are " + totalPoints + ".";
-}
-
-
-function startQuiz(category) {
-    currentCategory = category;
-    questionIndex = 0;
-    roundScore = 0;
-    roundPoints = 0;
-    answered = false;
-
-    document.querySelectorAll(".category-btn").forEach(function (button) {
-        button.classList.toggle(
-            "active",
-            button.dataset.category === category
-        );
-    });
-
-    quizGame.classList.remove("hidden");
-    quizResult.classList.add("hidden");
-
-    renderQuestion();
-}
-
-
-document.querySelectorAll(".category-btn").forEach(function (button) {
-    button.addEventListener("click", function () {
-        startQuiz(button.dataset.category);
-    });
-});
-
-
-nextButton.addEventListener("click", function () {
-    if (!answered) return;
-
-    questionIndex += 1;
-    renderQuestion();
-});
-
-
-restartButton.addEventListener("click", function () {
-    startQuiz(currentCategory);
-});
-
-
-document.getElementById("playAgain").addEventListener("click", function () {
-    startQuiz(currentCategory);
-});
-
-
-updateTotalPoints();
-startQuiz("science");
+initDailyChallenge();
 </script>
-
 </body>
 </html>
 """
