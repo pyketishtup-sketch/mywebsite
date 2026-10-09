@@ -1,3 +1,4 @@
+
 from flask import Flask
 import os
 
@@ -9,13 +10,39 @@ def home():
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="theme-color" content="#0f172a">
 <title>Tishtup | Student Portfolio</title>
 
 <style>
+:root {
+    color-scheme: dark;
+    --bg: #0f172a;
+    --nav: rgba(15, 23, 42, 0.95);
+    --card: #1e293b;
+    --footer: #020617;
+    --text: #f8fafc;
+    --muted: #cbd5e1;
+    --subtle: #94a3b8;
+    --accent: #38bdf8;
+    --border: #334155;
+    --shadow: rgba(0, 0, 0, 0.25);
+}
+
+body.light {
+    color-scheme: light;
+    --bg: #f1f5f9;
+    --nav: rgba(241, 245, 249, 0.96);
+    --card: #ffffff;
+    --footer: #e2e8f0;
+    --text: #0f172a;
+    --muted: #334155;
+    --subtle: #475569;
+    --accent: #0284c7;
+    --border: #cbd5e1;
+    --shadow: rgba(15, 23, 42, 0.10);
+}
 
 * {
     box-sizing: border-box;
@@ -25,50 +52,73 @@ def home():
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
 }
-
-/* NAVBAR */
 
 nav {
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 18px 8%;
-    background: rgba(15, 23, 42, 0.95);
-    border-bottom: 1px solid #1e293b;
+    padding: 16px 6%;
+    background: var(--nav);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
 }
 
 .logo {
     font-size: 24px;
     font-weight: bold;
-    color: #38bdf8;
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 nav a {
-    color: #cbd5e1;
+    color: var(--muted);
     text-decoration: none;
-    margin-left: 20px;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 nav a:hover {
-    color: #38bdf8;
+    color: var(--accent);
 }
 
-/* HERO */
+#theme-toggle {
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    border-radius: 25px;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+#theme-toggle:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
 
 .hero {
-    min-height: 90vh;
+    min-height: 88vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 80px 20px;
+    padding: 75px 20px;
     position: relative;
     overflow: hidden;
 }
@@ -76,26 +126,27 @@ nav a:hover {
 .hero:before {
     content: "";
     position: absolute;
-    width: 500px;
-    height: 500px;
-    background: #38bdf8;
-    opacity: 0.08;
+    width: 420px;
+    height: 420px;
+    background: var(--accent);
+    opacity: 0.09;
     filter: blur(100px);
     border-radius: 50%;
+    pointer-events: none;
 }
 
 .hero-content {
     position: relative;
     max-width: 900px;
-    animation: fadeUp 1s ease;
+    animation: fadeUp 0.8s ease;
 }
 
 .badge {
     display: inline-block;
     padding: 8px 16px;
-    border: 1px solid #38bdf8;
+    border: 1px solid var(--accent);
     border-radius: 30px;
-    color: #38bdf8;
+    color: var(--accent);
     font-size: 13px;
     margin-bottom: 20px;
 }
@@ -106,178 +157,164 @@ h1 {
 }
 
 h1 span {
-    color: #38bdf8;
+    color: var(--accent);
     animation: glow 2s infinite alternate;
 }
 
-.hero p {
-    color: #cbd5e1;
-    font-size: 19px;
+p {
     line-height: 1.7;
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 18px;
 }
 
 .button {
     display: inline-block;
-    margin-top: 25px;
+    margin-top: 20px;
     padding: 13px 25px;
-    background: #38bdf8;
-    color: #0f172a;
+    background: var(--accent);
+    color: #ffffff;
     text-decoration: none;
     border-radius: 8px;
     font-weight: bold;
-    transition: 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .button:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(56,189,248,0.3);
+    box-shadow: 0 10px 30px var(--shadow);
 }
-
-/* INFO BOXES */
 
 .info-container {
-    margin-top: 45px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.info-box {
-    background: #1e293b;
-    padding: 18px 25px;
-    border-radius: 12px;
-    min-width: 150px;
-    transition: 0.3s;
-}
-
-.info-box:hover {
-    transform: translateY(-6px);
-}
-
-/* SECTIONS */
-
-section {
-    padding: 90px 8%;
-    text-align: center;
-}
-
-section h2 {
-    font-size: 36px;
-    margin-bottom: 15px;
-}
-
-.section-text {
-    color: #94a3b8;
-    max-width: 700px;
-    margin: auto;
-    line-height: 1.7;
-}
-
-/* CARDS */
-
-.cards {
     margin-top: 40px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 25px;
+    gap: 14px;
+}
+
+.info-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 17px 22px;
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+}
+
+section {
+    padding: 80px 7%;
+    text-align: center;
+    scroll-margin-top: 85px;
+}
+
+section h2 {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.section-text {
+    color: var(--subtle);
+    max-width: 700px;
+    margin: auto;
+}
+
+.cards {
+    margin-top: 38px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
 }
 
 .card {
     width: 270px;
-    padding: 30px;
-    background: #1e293b;
+    padding: 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
     border-radius: 15px;
-    transition: 0.3s;
-    border: 1px solid transparent;
+    box-shadow: 0 8px 25px var(--shadow);
+    transition: transform 0.3s, border-color 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    border-color: #38bdf8;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    transform: translateY(-7px);
+    border-color: var(--accent);
 }
 
 .card h3 {
-    color: #38bdf8;
+    color: var(--accent);
 }
 
 .card p {
-    color: #cbd5e1;
-    line-height: 1.6;
+    color: var(--muted);
 }
-
-/* CONTACT */
 
 .contact-box {
     max-width: 850px;
-    margin: 40px auto 0;
-    background: #1e293b;
-    padding: 45px 30px;
+    margin: 35px auto 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 38px 25px;
     border-radius: 20px;
-    border: 1px solid #334155;
 }
 
 .contact-box h3 {
-    font-size: 28px;
-    margin-top: 0;
+    font-size: 26px;
 }
 
 .contact-box p {
-    color: #94a3b8;
-    line-height: 1.7;
+    color: var(--subtle);
 }
 
 .socials {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 18px;
-    margin-top: 30px;
+    gap: 16px;
+    margin-top: 25px;
 }
 
 .social {
     display: inline-block;
     padding: 15px 22px;
-    background: #0f172a;
-    color: white;
+    background: var(--bg);
+    color: var(--text);
     text-decoration: none;
     border-radius: 10px;
-    border: 1px solid #334155;
-    transition: 0.3s;
+    border: 1px solid var(--border);
+    transition: transform 0.3s, border-color 0.3s;
 }
 
 .social:hover {
-    transform: translateY(-5px);
-    border-color: #38bdf8;
-    color: #38bdf8;
+    transform: translateY(-4px);
+    border-color: var(--accent);
 }
 
 .username {
-    color: #94a3b8;
-    font-size: 13px;
     display: block;
-    margin-top: 5px;
+    color: var(--subtle);
+    font-size: 13px;
+    margin-top: 6px;
 }
-
-/* FOOTER */
 
 footer {
-    padding: 30px;
+    padding: 25px;
     text-align: center;
-    background: #020617;
-    color: #64748b;
+    background: var(--footer);
+    color: var(--subtle);
 }
-
-/* ANIMATIONS */
 
 @keyframes fadeUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(25px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -286,305 +323,292 @@ footer {
 
 @keyframes glow {
     from {
-        text-shadow: 0 0 5px #38bdf8;
+        text-shadow: 0 0 5px var(--accent);
     }
-
     to {
-        text-shadow: 0 0 25px #38bdf8;
+        text-shadow: 0 0 22px var(--accent);
     }
 }
 
-/* MOBILE */
-
 @media (max-width: 700px) {
-
     nav {
-        padding: 15px 5%;
+        justify-content: center;
+        padding: 15px 4%;
+    }
+
+    .nav-links {
+        gap: 12px;
     }
 
     nav a {
-        margin-left: 8px;
         font-size: 12px;
     }
 
     h1 {
-        font-size: 45px;
+        font-size: 43px;
     }
 
     section {
-        padding: 70px 5%;
+        padding: 65px 5%;
     }
 
     .hero {
-        min-height: 85vh;
+        min-height: 80vh;
     }
 
+    .card {
+        width: 100%;
+        max-width: 340px;
+    }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
+}
 </style>
-
 </head>
 
 <body>
 
 <nav>
+    <div class="logo">Tishtup.</div>
 
-<div class="logo">Tishtup.</div>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#interests">Interests</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
 
-<div>
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#interests">Interests</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</div>
-
+        <button id="theme-toggle" type="button"
+                aria-label="Switch to light mode"
+                aria-pressed="false">
+            ☀️ Light mode
+        </button>
+    </div>
 </nav>
 
-
-<!-- HERO -->
-
 <section class="hero">
+    <div class="hero-content">
+        <div class="badge">
+            CLASS XI - PCM - COMPUTER SCIENCE
+        </div>
 
-<div class="hero-content">
+        <h1>Hi, I'm <span>Tishtup</span>.</h1>
 
-<div class="badge">
-CLASS XI - PCM - COMPUTER SCIENCE
-</div>
+        <p>Student | Learner | Future Developer</p>
 
-<h1>
-Hi, I'm <span>Tishtup</span>.
-</h1>
+        <p>
+            I enjoy learning, exploring technology,
+            programming and building new things.
+        </p>
 
-<p>
-Student | Learner | Future Developer
-</p>
+        <a href="#about" class="button">
+            Explore My Portfolio
+        </a>
 
-<p>
-I am a Class XI student passionate about learning,
-technology, programming and building new things.
-</p>
-
-<a href="#about" class="button">
-Explore My Portfolio
-</a>
-
-<div class="info-container">
-
-<div class="info-box">
-Physics
-</div>
-
-<div class="info-box">
-Chemistry
-</div>
-
-<div class="info-box">
-Mathematics
-</div>
-
-<div class="info-box">
-Computer Science
-</div>
-
-</div>
-
-</div>
-
+        <div class="info-container">
+            <div class="info-box">Physics</div>
+            <div class="info-box">Chemistry</div>
+            <div class="info-box">Mathematics</div>
+            <div class="info-box">Computer Science</div>
+        </div>
+    </div>
 </section>
-
-
-<!-- ABOUT -->
 
 <section id="about">
-
-<h2>About Me</h2>
-
-<p class="section-text">
-I am a Class XI student studying PCM and Computer Science.
-I am currently learning Python, programming and web development.
-My goal is to keep improving my skills and build interesting projects.
-</p>
-
+    <h2>About Me</h2>
+    <p class="section-text">
+        I am a Class XI student studying PCM and Computer Science.
+        I am learning Python, programming and web development.
+        My goal is to keep improving my skills and build interesting projects.
+    </p>
 </section>
-
-
-<!-- SKILLS -->
 
 <section id="skills">
+    <h2>My Skills</h2>
+    <p class="section-text">
+        Things I am currently learning and improving.
+    </p>
 
-<h2>My Skills</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Python</h3>
+            <p>
+                Learning programming fundamentals and building small applications.
+            </p>
+        </div>
 
-<p class="section-text">
-Things I am currently learning and improving.
-</p>
+        <div class="card">
+            <h3>Flask</h3>
+            <p>
+                Learning how Python can be used to create real websites.
+            </p>
+        </div>
 
-<div class="cards">
-
-<div class="card">
-<h3>Python</h3>
-<p>
-Learning programming fundamentals and building small applications.
-</p>
-</div>
-
-<div class="card">
-<h3>Flask</h3>
-<p>
-Learning how Python can be used to create real websites.
-</p>
-</div>
-
-<div class="card">
-<h3>Problem Solving</h3>
-<p>
-Working on Physics, Chemistry and Mathematics problems.
-</p>
-</div>
-
-</div>
-
+        <div class="card">
+            <h3>Problem Solving</h3>
+            <p>
+                Working on Physics, Chemistry and Mathematics problems.
+            </p>
+        </div>
+    </div>
 </section>
-
-
-<!-- INTERESTS -->
 
 <section id="interests">
+    <h2>Beyond Academics</h2>
+    <p class="section-text">
+        The things I enjoy outside my regular studies.
+    </p>
 
-<h2>Beyond Academics</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Cricket</h3>
+            <p>
+                A sport I have loved since childhood.
+                Cricket is one of my biggest passions.
+            </p>
+        </div>
 
-<p class="section-text">
-The things I enjoy outside my regular studies.
-</p>
+        <div class="card">
+            <h3>Technology</h3>
+            <p>
+                I enjoy exploring computers, programming and new technology.
+            </p>
+        </div>
 
-<div class="cards">
-
-<div class="card">
-<h3>Cricket</h3>
-<p>
-A sport I have loved since childhood.
-Cricket is one of my biggest passions.
-</p>
-</div>
-
-<div class="card">
-<h3>Technology</h3>
-<p>
-I enjoy exploring computers, programming and new technology.
-</p>
-</div>
-
-<div class="card">
-<h3>Learning</h3>
-<p>
-I like learning new things and improving my skills step by step.
-</p>
-</div>
-
-</div>
-
+        <div class="card">
+            <h3>Learning</h3>
+            <p>
+                I like learning new things and improving my skills step by step.
+            </p>
+        </div>
+    </div>
 </section>
-
-
-<!-- PROJECTS -->
 
 <section id="projects">
+    <h2>My Projects</h2>
+    <p class="section-text">
+        Some things I am building while learning programming.
+    </p>
 
-<h2>My Projects</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>My Portfolio</h3>
+            <p>
+                This website was built using Python and Flask.
+            </p>
+        </div>
 
-<p class="section-text">
-Some of the things I am building while learning programming.
-</p>
+        <div class="card">
+            <h3>Python Programs</h3>
+            <p>
+                Small programs and experiments created while learning Python.
+            </p>
+        </div>
 
-<div class="cards">
-
-<div class="card">
-<h3>My Portfolio</h3>
-<p>
-This website was built using Python and Flask.
-</p>
-</div>
-
-<div class="card">
-<h3>Python Programs</h3>
-<p>
-Small programs and experiments created while learning Python.
-</p>
-</div>
-
-<div class="card">
-<h3>Future Projects</h3>
-<p>
-More interesting projects coming soon.
-</p>
-</div>
-
-</div>
-
+        <div class="card">
+            <h3>Future Projects</h3>
+            <p>
+                More interesting projects coming soon.
+            </p>
+        </div>
+    </div>
 </section>
-
-
-<!-- CONTACT -->
 
 <section id="contact">
+    <h2>Let's Connect</h2>
+    <p class="section-text">
+        Follow my journey and explore my work.
+    </p>
 
-<h2>Let's Connect</h2>
+    <div class="contact-box">
+        <h3>Connect with Tishtup</h3>
+        <p>
+            You can find my work and updates on these platforms.
+        </p>
 
-<p class="section-text">
-Want to see what I am building or follow my journey?
-Connect with me here.
-</p>
+        <div class="socials">
+            <a class="social"
+               href="https://github.com/pyketishtup-sketch"
+               target="_blank"
+               rel="noopener noreferrer">
+                💻 GitHub
+                <span class="username">pyketishtup-sketch</span>
+            </a>
 
-<div class="contact-box">
-
-<h3>Connect with Tishtup</h3>
-
-<p>
-You can find my work and updates on the platforms below.
-</p>
-
-<div class="socials">
-
-<a class="social"
-href="https://github.com/pyketishtup-sketch"
-target="_blank">
-
-💻 GitHub
-
-<span class="username">
-pyketishtup-sketch
-</span>
-
-</a>
-
-<a class="social"
-href="#"
-onclick="alert('Instagram username: tishtup.*.1845.*.pyke'); return false;">
-
-📸 Instagram
-
-<span class="username">
-tishtup.*.1845.*.pyke
-</span>
-
-</a>
-
-</div>
-
-</div>
-
+            <a class="social"
+               href="#contact"
+               onclick="return false;">
+                📸 Instagram
+                <span class="username">tishtup.*.1845.*.pyke</span>
+            </a>
+        </div>
+    </div>
 </section>
 
-
-<!-- FOOTER -->
-
 <footer>
-
-<p>
-© 2026 Tishtup. Built with Python & Flask.
-</p>
-
+    <p>© 2026 Tishtup. Built with Python &amp; Flask.</p>
 </footer>
+
+<script>
+(function () {
+    const button = document.getElementById("theme-toggle");
+    const metaTheme = document.querySelector(
+        'meta[name="theme-color"]'
+    );
+
+    function applyTheme(theme) {
+        const isLight = theme === "light";
+
+        document.body.classList.toggle("light", isLight);
+
+        button.textContent = isLight
+            ? "🌙 Dark mode"
+            : "☀️ Light mode";
+
+        button.setAttribute(
+            "aria-label",
+            isLight ? "Switch to dark mode" : "Switch to light mode"
+        );
+
+        button.setAttribute("aria-pressed", String(isLight));
+
+        metaTheme.setAttribute(
+            "content",
+            isLight ? "#f1f5f9" : "#0f172a"
+        );
+    }
+
+    let savedTheme = "dark";
+
+    try {
+        savedTheme = localStorage.getItem("tishtup-theme") || "dark";
+    } catch (error) {
+        savedTheme = "dark";
+    }
+
+    applyTheme(savedTheme);
+
+    button.addEventListener("click", function () {
+        const newTheme = document.body.classList.contains("light")
+            ? "dark"
+            : "light";
+
+        applyTheme(newTheme);
+
+        try {
+            localStorage.setItem("tishtup-theme", newTheme);
+        } catch (error) {
+            // Theme switching still works without browser storage.
+        }
+    });
+})();
+</script>
 
 </body>
 </html>
