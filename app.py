@@ -1,8 +1,8 @@
-
 from flask import Flask
 import os
 
 app = Flask(__name__)
+
 
 @app.route("/")
 def home():
@@ -184,7 +184,7 @@ footer {padding:25px 8%;border-top:1px solid var(--border);text-align:center;col
     <div class="nav-links">
         <a href="#about">About</a><a href="#skills">Skills</a>
         <a href="#interests">Interests</a><a href="#cricket">Cricket</a>
-        <a href="#playground">Playground</a><a href="#projects">Projects</a>
+        <a href="#playground">Playground</a><a href="#learn">Learn</a><a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
         <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">☀️</button>
     </div>
@@ -323,6 +323,35 @@ footer {padding:25px 8%;border-top:1px solid var(--border);text-align:center;col
     </div>
 </section>
 
+<section id="learn">
+    <div class="section-heading reveal">
+        <span class="eyebrow">LEARN SOMETHING NEW</span>
+        <h2>Quick <span class="gradient-text">Learning Corner</span></h2>
+        <p>Short explanations to make each visit useful, whether you love cricket or science.</p>
+    </div>
+    <div class="grid">
+        <article class="card reveal">
+            <div class="card-icon">⚡</div>
+            <h3>Science Bite: Power</h3>
+            <p>Power is the rate at which work is done. In SI units, power is measured in watts (W).</p>
+            <span class="tag">Physics</span>
+        </article>
+        <article class="card reveal">
+            <div class="card-icon">🏏</div>
+            <h3>Cricket Bite: The Over</h3>
+            <p>A standard over contains six legal deliveries. Wides and no-balls do not count as legal balls in the over.</p>
+            <span class="tag">Cricket Rules</span>
+        </article>
+        <article class="card reveal">
+            <div class="card-icon">🧠</div>
+            <h3>Quiz Tip: Learn the Why</h3>
+            <p>After answering a question, read the explanation. Understanding why an answer is correct helps you remember it longer.</p>
+            <span class="tag">Study Skills</span>
+        </article>
+    </div>
+    <p class="project-note" style="text-align:center;margin-top:18px">This is student-made educational content for learning and practice.</p>
+</section>
+
 <section id="projects">
     <div class="section-heading reveal"><span class="eyebrow">THINGS I'M BUILDING</span><h2>My <span class="gradient-text">Projects</span></h2></div>
     <div class="grid">
@@ -343,6 +372,7 @@ footer {padding:25px 8%;border-top:1px solid var(--border);text-align:center;col
 <footer>
     <p>Designed with curiosity and built while learning. 💙</p>
     <p>© <span id="year"></span> Tishtup Pyke · Keep Learning. Keep Building.</p>
+    <p style="margin-top:8px"><a href="/about">About</a> · <a href="/privacy">Privacy Policy</a> · <a href="/contact">Contact</a></p>
 </footer>
 
 <script>
@@ -427,6 +457,7 @@ function awardPoints(points) {
 /* QUIZ ENGINE */
 let category = "science", index = 0, score = 0, roundPoints = 0, answered = false;
 const $ = id => document.getElementById(id);
+
 function startQuiz(nextCategory) {
     category = nextCategory || category;
     index = 0; score = 0; roundPoints = 0; answered = false;
@@ -631,9 +662,103 @@ initDailyChallenge();
 """
 
 
+# These pages provide site information and are linked from the homepage footer.
+def info_page(title, body):
+    template = r"""
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#081426">
+<title>PAGE_TITLE | Tishtup Pyke</title>
+<style>
+:root{--bg:#081426;--card:#142741;--text:#eef4ff;--muted:#aabbd3;--accent:#55b8ff;--border:rgba(255,255,255,.12)}
+*{box-sizing:border-box}
+body{margin:0;padding:28px 18px;font-family:"Segoe UI",Arial,sans-serif;background:radial-gradient(circle at 10% 5%,rgba(65,133,255,.13),transparent 30%),var(--bg);color:var(--text);line-height:1.75}
+main{max-width:850px;margin:25px auto;padding:clamp(22px,5vw,42px);border:1px solid var(--border);border-radius:20px;background:var(--card)}
+h1{line-height:1.2;font-size:clamp(2rem,6vw,3.2rem);margin-top:0}
+h2{margin-top:26px;color:var(--accent)}
+p,li{color:var(--muted)}
+a{color:var(--accent)}
+.home{display:inline-block;margin-bottom:24px;text-decoration:none;border:1px solid var(--border);padding:8px 13px;border-radius:9px}
+footer{max-width:850px;margin:20px auto;text-align:center;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<main>
+<a class="home" href="/">← Back to homepage</a>
+<h1>PAGE_TITLE</h1>
+BODY_CONTENT
+</main>
+<footer>Student portfolio and learning project · <a href="/">Home</a> · <a href="/privacy">Privacy</a> · <a href="/contact">Contact</a></footer>
+</body>
+</html>
+"""
+    return template.replace("PAGE_TITLE", title).replace("BODY_CONTENT", body)
+
+
+@app.route("/about")
+def about_page():
+    return info_page(
+        "About",
+        """
+        <p>Hi, I'm Tishtup Pyke, a Class XI student studying Physics, Chemistry and Mathematics. I'm learning Python and web development and building this website as a personal project.</p>
+        <h2>What you'll find here</h2>
+        <ul>
+          <li>Interactive science, general knowledge and cricket quizzes.</li>
+          <li>A daily cricket question and explanations after answers.</li>
+          <li>Short learning notes and information about my coding interests.</li>
+        </ul>
+        <h2>Why I built this website</h2>
+        <p>I wanted a place to practise coding, share my interests and make learning a little more interactive. The website is a work in progress, so content and features may change as I learn.</p>
+        <p>This is an independent student project and is not affiliated with any cricket team or governing body.</p>
+        """
+    )
+
+
+@app.route("/privacy")
+def privacy_page():
+    return info_page(
+        "Privacy Policy",
+        """
+        <p><strong>Last updated: 9 October 2026</strong></p>
+        <p>This is a personal student portfolio and quiz website. This page explains the basic data handling used by the current version of the site.</p>
+        <h2>Information stored in your browser</h2>
+        <p>The quiz features use your browser's local storage to remember your theme preference, total quiz points, saved local leaderboard scores, and whether you have answered the daily challenge. This information is stored on your device/browser and is not sent to this site's Flask app as part of those features. Clearing browser data may remove it.</p>
+        <p>If you enter a nickname for the local leaderboard, it is saved in that browser only. Do not enter sensitive or private information as a nickname.</p>
+        <h2>Technical information</h2>
+        <p>This site is hosted using Render. The hosting provider may process technical information such as request and server logs to operate, secure and maintain the service. Check Render's current privacy information for details about its processing.</p>
+        <h2>Sharing features</h2>
+        <p>If you choose to use the score-sharing button, your device may open its own sharing interface or copy text to your clipboard. You decide whether and where to share it.</p>
+        <h2>Advertising and third-party services</h2>
+        <p>This version of the site does not intentionally include advertising scripts or an advertising network. If ads, analytics, contact forms, or other third-party services are added later, this policy should be updated to explain their data practices before those features are used.</p>
+        <h2>Children and personal information</h2>
+        <p>Please do not submit sensitive personal information through this website. There is no contact form on this site; the contact page links to external profiles instead.</p>
+        <h2>Changes</h2>
+        <p>This policy may be updated when the website's features change. The date at the top will be revised when meaningful changes are made.</p>
+        """
+    )
+
+
+@app.route("/contact")
+def contact_page():
+    return info_page(
+        "Contact",
+        """
+        <p>Thanks for visiting my website. If you want to see my coding work or reach my public profile, use one of the links below.</p>
+        <h2>GitHub</h2>
+        <p><a href="https://github.com/pyketishtup-sketch" target="_blank" rel="noopener noreferrer">github.com/pyketishtup-sketch ↗</a></p>
+        <h2>Instagram</h2>
+        <p>Username: <strong>tishtup._.1845._.pyke</strong></p>
+        <p>For your privacy, avoid sharing passwords, financial information, your home address, or other sensitive details online.</p>
+        <p><a href="/">Return to the homepage →</a></p>
+        """
+    )
+
+
 if __name__ == "__main__":
     app.run(
         host="0.0.0.0",
         port=int(os.environ.get("PORT", 5000))
     )
-
