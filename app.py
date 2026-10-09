@@ -13,16 +13,15 @@ def home():
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0b1020">
-    <meta name="description" content="Tishtup Pyke's personal student and developer portfolio.">
-    <title>Tishtup Pyke | Personal Portfolio</title>
+    <meta name="description" content="Tishtup Pyke's personal portfolio featuring programming, technology, cricket and Mumbai Indians.">
+    <title>Tishtup Pyke | Student Portfolio</title>
 
     <style>
         :root {
             color-scheme: dark;
             --bg: #0b1020;
-            --bg2: #10182d;
-            --nav: rgba(11, 16, 32, .86);
-            --card: rgba(23, 33, 57, .78);
+            --nav: rgba(11, 16, 32, .88);
+            --card: rgba(23, 33, 57, .82);
             --text: #f8fafc;
             --muted: #cbd5e1;
             --subtle: #94a3b8;
@@ -31,14 +30,15 @@ def home():
             --border: rgba(148, 163, 184, .19);
             --shadow: rgba(0, 0, 0, .28);
             --footer: #070b16;
+            --mi-blue: #3b82f6;
+            --mi-gold: #fbbf24;
         }
 
         body.light {
             color-scheme: light;
             --bg: #f4f7ff;
-            --bg2: #eaf0ff;
-            --nav: rgba(244, 247, 255, .88);
-            --card: rgba(255, 255, 255, .82);
+            --nav: rgba(244, 247, 255, .90);
+            --card: rgba(255, 255, 255, .86);
             --text: #111827;
             --muted: #334155;
             --subtle: #64748b;
@@ -104,7 +104,7 @@ def home():
         }
 
         .logo {
-            font-size: 1.45rem;
+            font-size: 1.4rem;
             font-weight: 900;
             letter-spacing: -1px;
             white-space: nowrap;
@@ -117,12 +117,12 @@ def home():
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 18px;
         }
 
         .nav-links a {
             color: var(--muted);
-            font-size: .91rem;
+            font-size: .89rem;
             transition: color .2s;
         }
 
@@ -292,11 +292,11 @@ def home():
             backdrop-filter: blur(8px);
         }
 
-        /* Sections */
+        /* General sections */
 
         section {
             padding: 82px 0;
-            scroll-margin-top: 65px;
+            scroll-margin-top: 80px;
         }
 
         .section-heading {
@@ -319,7 +319,7 @@ def home():
             color: var(--accent);
         }
 
-        /* Glass panels and cards */
+        /* About */
 
         .glass-panel {
             max-width: 850px;
@@ -341,6 +341,8 @@ def home():
         .glass-panel p:last-child {
             margin-bottom: 0;
         }
+
+        /* Cards */
 
         .cards {
             display: grid;
@@ -436,6 +438,190 @@ def home():
             font-weight: 750;
         }
 
+        /* Cricket Zone */
+
+        .cricket-section {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .cricket-section::before {
+            content: "";
+            position: absolute;
+            inset: 12% 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 15% 35%, rgba(37,99,235,.15), transparent 40%),
+                radial-gradient(ellipse at 85% 65%, rgba(251,191,36,.08), transparent 38%);
+        }
+
+        .mi-banner {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 38px;
+            padding: clamp(28px, 5vw, 48px);
+            border-radius: 24px;
+            border: 1px solid rgba(96,165,250,.35);
+            background:
+                radial-gradient(ellipse at 85% 15%, rgba(96,165,250,.28), transparent 40%),
+                linear-gradient(125deg, #071b49, #123e86 55%, #0b1b3e);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, .20);
+            color: #f8fafc;
+        }
+
+        .mi-banner::after {
+            content: "MI";
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%) rotate(-8deg);
+            font-size: clamp(6rem, 20vw, 13rem);
+            line-height: 1;
+            font-weight: 1000;
+            letter-spacing: -12px;
+            color: rgba(255,255,255,.055);
+            pointer-events: none;
+        }
+
+        .mi-banner-content {
+            position: relative;
+            z-index: 1;
+            max-width: 670px;
+        }
+
+        .mi-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #fbbf24;
+            font-size: .8rem;
+            letter-spacing: 2px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .mi-banner h3 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.15;
+            margin: 14px 0;
+            letter-spacing: -1px;
+        }
+
+        .mi-banner p {
+            color: #dbeafe;
+            max-width: 560px;
+        }
+
+        .mi-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 23px;
+        }
+
+        .mi-badge {
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,.20);
+            background: rgba(255,255,255,.08);
+            font-size: .84rem;
+            color: #f8fafc;
+        }
+
+        .cricket-subheading {
+            margin: 30px 0 22px;
+            font-size: 1.35rem;
+            letter-spacing: -.3px;
+        }
+
+        .player-card {
+            padding: 0;
+        }
+
+        .player-art {
+            position: relative;
+            height: 175px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 40%, rgba(255,255,255,.20), transparent 35%),
+                linear-gradient(135deg, var(--player-color), #10182d);
+        }
+
+        .player-art::before,
+        .player-art::after {
+            content: "";
+            position: absolute;
+            border: 1px solid rgba(255,255,255,.13);
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+        }
+
+        .player-art::after {
+            width: 130px;
+            height: 130px;
+        }
+
+        .player-initials {
+            position: relative;
+            z-index: 1;
+            font-size: 3.7rem;
+            font-weight: 1000;
+            letter-spacing: -3px;
+            color: rgba(255,255,255,.96);
+            text-shadow: 0 8px 30px rgba(0,0,0,.24);
+        }
+
+        .player-number {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            z-index: 1;
+            color: rgba(255,255,255,.85);
+            font-weight: 800;
+            font-size: .82rem;
+        }
+
+        .player-info {
+            padding: 22px;
+        }
+
+        .player-role {
+            display: inline-block;
+            margin: 0 0 9px;
+            padding: 4px 9px;
+            color: var(--accent);
+            background: rgba(56,189,248,.09);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: .75rem;
+            font-weight: 800;
+        }
+
+        .player-info h4 {
+            font-size: 1.18rem;
+            margin-bottom: 7px;
+        }
+
+        .player-info p {
+            color: var(--subtle);
+            font-size: .91rem;
+        }
+
+        .cricket-note {
+            margin-top: 24px;
+            color: var(--subtle);
+            font-size: .85rem;
+            text-align: center;
+        }
+
+        /* Contact */
+
         .contact-intro {
             max-width: 650px;
             margin: 0 auto 32px;
@@ -443,7 +629,7 @@ def home():
             text-align: center;
         }
 
-        /* Reveal on scroll */
+        /* Scroll reveal */
 
         .reveal {
             opacity: 0;
@@ -493,7 +679,7 @@ def home():
             }
         }
 
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
             .nav-inner {
                 padding: 13px 0;
                 flex-wrap: wrap;
@@ -504,7 +690,7 @@ def home():
                 width: 100%;
                 justify-content: center;
                 flex-wrap: wrap;
-                gap: 10px 17px;
+                gap: 10px 15px;
             }
 
             .cards {
@@ -531,11 +717,11 @@ def home():
             }
 
             .nav-links {
-                gap: 9px 14px;
+                gap: 9px 13px;
             }
 
             .nav-links a {
-                font-size: .85rem;
+                font-size: .83rem;
             }
 
             .hero {
@@ -554,9 +740,16 @@ def home():
                 grid-template-columns: 1fr;
             }
 
-            .glass-panel,
-            .card {
+            .glass-panel {
                 padding: 23px;
+            }
+
+            .mi-banner {
+                padding: 25px;
+            }
+
+            .player-art {
+                height: 155px;
             }
         }
 
@@ -587,6 +780,7 @@ def home():
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
                 <a href="#interests">Interests</a>
+                <a href="#cricket">Cricket</a>
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
             </div>
@@ -599,6 +793,7 @@ def home():
     </nav>
 
     <main>
+        <!-- Hero -->
         <section class="hero" id="home">
             <div class="container">
                 <div class="hero-content">
@@ -633,6 +828,7 @@ def home():
             </div>
         </section>
 
+        <!-- About -->
         <section id="about">
             <div class="container">
                 <div class="section-heading reveal">
@@ -661,6 +857,7 @@ def home():
             </div>
         </section>
 
+        <!-- Skills -->
         <section id="skills">
             <div class="container">
                 <div class="section-heading reveal">
@@ -699,6 +896,7 @@ def home():
             </div>
         </section>
 
+        <!-- Interests -->
         <section id="interests">
             <div class="container">
                 <div class="section-heading reveal">
@@ -714,6 +912,7 @@ def home():
                             A sport I've loved since childhood.
                             Cricket is one of my biggest passions.
                         </p>
+                        <a class="card-link" href="#cricket">Enter Cricket Zone ↗</a>
                     </article>
 
                     <article class="card reveal">
@@ -737,6 +936,117 @@ def home():
             </div>
         </section>
 
+        <!-- Premium Cricket Zone -->
+        <section id="cricket" class="cricket-section">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <h2>The <span>Cricket Zone</span></h2>
+                    <p>A little space dedicated to the game I love. 🏏</p>
+                </div>
+
+                <div class="mi-banner reveal">
+                    <div class="mi-banner-content">
+                        <span class="mi-kicker">💙 My Favourite IPL Team</span>
+                        <h3>Mumbai Indians</h3>
+                        <p>
+                            Blue and gold, unforgettable cricket memories,
+                            and a team that makes every match exciting.
+                            Mumbai Indians will always have a special place
+                            in my cricket world.
+                        </p>
+
+                        <div class="mi-badges">
+                            <span class="mi-badge">🔵 One Family</span>
+                            <span class="mi-badge">🏏 Cricket Passion</span>
+                            <span class="mi-badge">💛 Blue & Gold</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-heading reveal">
+                    <h2>Players I <span>Admire</span></h2>
+                    <p>Four names that make cricket even more exciting.</p>
+                </div>
+
+                <div class="cards">
+                    <article class="card player-card reveal">
+                        <div class="player-art"
+                            style="--player-color:#1746a2;">
+                            <span class="player-number">01</span>
+                            <span class="player-initials">RS</span>
+                        </div>
+                        <div class="player-info">
+                            <span class="player-role">BATTER</span>
+                            <h4>Rohit Sharma</h4>
+                            <p>
+                                Known for elegant stroke play, effortless
+                                timing, and memorable big scores. A key
+                                favourite in my cricket zone.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="card player-card reveal">
+                        <div class="player-art"
+                            style="--player-color:#7c2d12;">
+                            <span class="player-number">02</span>
+                            <span class="player-initials">VK</span>
+                        </div>
+                        <div class="player-info">
+                            <span class="player-role">BATTER</span>
+                            <h4>Virat Kohli</h4>
+                            <p>
+                                Famous for intensity, consistency, and
+                                chasing challenging targets. A player
+                                admired by cricket fans everywhere.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="card player-card reveal">
+                        <div class="player-art"
+                            style="--player-color:#075985;">
+                            <span class="player-number">03</span>
+                            <span class="player-initials">JB</span>
+                        </div>
+                        <div class="player-info">
+                            <span class="player-role">FAST BOWLER</span>
+                            <h4>Jasprit Bumrah</h4>
+                            <p>
+                                Recognised for a distinctive bowling
+                                action, precision, and exceptional
+                                control in high-pressure overs.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="card player-card reveal">
+                        <div class="player-art"
+                            style="--player-color:#9a3412;">
+                            <span class="player-number">04</span>
+                            <span class="player-initials">HP</span>
+                        </div>
+                        <div class="player-info">
+                            <span class="player-role">ALL-ROUNDER</span>
+                            <h4>Hardik Pandya</h4>
+                            <p>
+                                An explosive batter and seam-bowling
+                                all-rounder known for bringing energy
+                                and power to the game.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <p class="cricket-note reveal">
+                    A fan-made personal section. Player cards use
+                    stylised initials rather than official player photos
+                    or team logos.
+                </p>
+            </div>
+        </section>
+
+        <!-- Projects -->
         <section id="projects">
             <div class="container">
                 <div class="section-heading reveal">
@@ -786,6 +1096,7 @@ def home():
             </div>
         </section>
 
+        <!-- Contact -->
         <section id="contact">
             <div class="container">
                 <div class="section-heading reveal">
@@ -891,7 +1202,7 @@ def home():
                 try {
                     localStorage.setItem("tishtup-theme", nextTheme);
                 } catch (error) {
-                    // Theme switching works even if storage is unavailable.
+                    // Theme switching still works if storage is unavailable.
                 }
             });
 
